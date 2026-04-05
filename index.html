@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Search engines blocked until you're ready to go public -->
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Shubhendu Sinha | Operations & Analytics Leader</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:        #0C1C3D;
+      --navy-mid:    #162B52;
+      --navy-light:  #1E3A6E;
+      --gold:        #C4922A;
+      --gold-lt:     #E5B84C;
+      --gold-pale:   #F5E9CE;
+      --bg:          #F2F4F7;
+      --white:       #FFFFFF;
+      --text:        #0C1C3D;
+      --muted:       #60718B;
+      --border:      #DDE3EC;
+      --green:       #0D9463;
+      --red:         #C8312C;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ───── NAVIGATION ───── */
+    #nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 1000;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.4rem 5rem;
+      transition: background .3s, box-shadow .3s, padding .3s;
+    }
+    #nav.solid {
+      background: var(--navy);
+      box-shadow: 0 2px 24px rgba(0,0,0,.35);
+      padding: .9rem 5rem;
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.45rem; font-weight: 700;
+      color: #fff; letter-spacing: .04em;
+    }
+    .nav-logo em { font-style: normal; color: var(--gold); }
+    .nav-links { display: flex; gap: 2.25rem; list-style: none; align-items: center; }
+    .nav-links a {
+      color: rgba(255,255,255,.8); text-decoration: none;
+      font-size: .8rem; font-weight: 500; letter-spacing: .1em;
+      text-transform: uppercase; transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--gold-lt); }
+    .nav-links .cta-pill {
+      background: var(--gold); color: var(--navy) !important;
+      padding: .45rem 1.15rem; border-radius: 3px; font-weight: 700 !important;
+    }
+    .nav-links .cta-pill:hover { background: var(--gold-lt); }
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      background: none; border: none; cursor: pointer;
+    }
+    .hamburger span { display: block; width: 24px; height: 2px; background: #fff; border-radius: 2px; transition: .3s; }
+
+    @media (max-width: 800px) {
+      #nav, #nav.solid { padding: 1rem 1.5rem; }
+      .hamburger { display: flex; }
+      .nav-links {
+        position: absolute; top: 100%; left: 0; right: 0;
+        background: var(--navy); flex-direction: column;
+        padding: 1.5rem; gap: 1.25rem;
+        clip-path: inset(0 0 100% 0); transition: clip-path .35s ease;
+      }
+      .nav-links.open { clip-path: inset(0 0 -5% 0); }
+    }
+
+    /* ───── HERO ───── */
+    .hero {
+      min-height: 100vh;
+      background: var(--navy);
+      display: flex; align-items: center;
+      position: relative; overflow: hidden;
+    }
+    /* Dot-grid texture */
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: radial-gradient(rgba(196,146,42,.13) 1px, transparent 1px);
+      background-size: 30px 30px;
+    }
+    /* Diagonal accent shard */
+    .hero-shard {
+      position: absolute; right: 0; top: 0;
+      width: 45%; height: 100%;
+      background: linear-gradient(160deg, rgba(255,255,255,.02) 0%, transparent 60%);
+      border-left: 1px solid rgba(196,146,42,.08);
+    }
+    /* Gold vertical line left */
+    .hero-line {
+      position: absolute; left: 5rem; top: 0; bottom: 0;
+      width: 1px; background: linear-gradient(to bottom, transparent, rgba(196,146,42,.3) 30%, rgba(196,146,42,.3) 70%, transparent);
+    }
+    .hero-inner {
+      position: relative; z-index: 1;
+      padding: 8rem 5rem 5rem;
+      max-width: 1280px; width: 100%; margin: 0 auto;
+    }
+    .hero-pre {
+      font-size: .7rem; font-weight: 700; letter-spacing: .3em;
+      text-transform: uppercase; color: var(--gold);
+      margin-bottom: 1.5rem; display: flex; align-items: center; gap: .75rem;
+      opacity: 0; animation: fU .6s ease forwards .2s;
+    }
+    .hero-pre::before { content: ''; display: block; width: 32px; height: 1px; background: var(--gold); }
+    .hero-name {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3.2rem, 7.5vw, 6rem);
+      font-weight: 900; color: #fff; line-height: 1.02;
+      margin-bottom: 1.25rem;
+      opacity: 0; animation: fU .7s ease forwards .4s;
+    }
+    .hero-name em { font-style: italic; color: var(--gold); }
+    .hero-subtitle {
+      font-size: clamp(.95rem, 1.8vw, 1.2rem);
+      font-weight: 300; color: rgba(255,255,255,.62);
+      max-width: 540px; line-height: 1.85; margin-bottom: 3rem;
+      opacity: 0; animation: fU .7s ease forwards .6s;
+    }
+    .hero-stats {
+      display: flex; gap: 0; margin-bottom: 3rem;
+      border: 1px solid rgba(255,255,255,.08); display: inline-flex;
+      border-radius: 4px; overflow: hidden;
+      opacity: 0; animation: fU .7s ease forwards .8s;
+    }
+    .h-stat {
+      padding: 1.25rem 2rem; border-right: 1px solid rgba(255,255,255,.08);
+    }
+    .h-stat:last-child { border-right: none; }
+    .h-stat strong {
+      font-family: 'Playfair Display', serif;
+      display: block; font-size: 2rem; font-weight: 700;
+      color: var(--gold-lt); line-height: 1; margin-bottom: .25rem;
+    }
+    .h-stat span { font-size: .7rem; font-weight: 500; color: rgba(255,255,255,.45); letter-spacing: .1em; text-transform: uppercase; }
+    .hero-ctas {
+      display: flex; gap: 1rem; flex-wrap: wrap;
+      opacity: 0; animation: fU .7s ease forwards 1s;
+    }
+    .btn { display: inline-block; padding: .85rem 2rem; border-radius: 3px; font-family: 'DM Sans', sans-serif; font-size: .85rem; font-weight: 600; letter-spacing: .07em; text-decoration: none; cursor: pointer; border: none; transition: transform .2s, background .2s, border-color .2s; }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-gold { background: var(--gold); color: var(--navy); }
+    .btn-gold:hover { background: var(--gold-lt); }
+    .btn-ghost { background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,.3); }
+    .btn-ghost:hover { border-color: rgba(255,255,255,.7); }
+    .scroll-cue {
+      position: absolute; bottom: 2.5rem; left: 50%;
+      transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: .5rem;
+      opacity: 0; animation: fI 1s ease forwards 1.5s;
+    }
+    .scroll-cue span { font-size: .65rem; letter-spacing: .2em; text-transform: uppercase; color: rgba(255,255,255,.25); }
+    .scroll-tick {
+      width: 1px; height: 44px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+      animation: tick 1.6s ease-in-out infinite;
+    }
+    @keyframes tick { 0%,100%{opacity:.2;transform:scaleY(.6) translateY(-6px)} 50%{opacity:1;transform:scaleY(1) translateY(0)} }
+    @keyframes fU { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:none} }
+    @keyframes fI { to{opacity:1} }
+
+    @media (max-width: 768px) {
+      .hero-inner { padding: 6.5rem 1.5rem 4rem; }
+      .hero-line { display: none; }
+      .hero-stats { flex-wrap: wrap; }
+      .h-stat { padding: 1rem 1.25rem; }
+    }
+
+    /* ───── SECTION BASE ───── */
+    .sec { padding: 6.5rem 5rem; }
+    .sec-inner { max-width: 1200px; margin: 0 auto; }
+    .sec-label { font-size: .68rem; font-weight: 700; letter-spacing: .3em; text-transform: uppercase; color: var(--gold); margin-bottom: .75rem; }
+    .sec-title { font-family: 'Playfair Display', serif; font-size: clamp(1.9rem, 3.5vw, 2.75rem); font-weight: 700; color: var(--navy); line-height: 1.2; margin-bottom: .9rem; }
+    .sec-title.on-dark { color: #fff; }
+    .sec-rule { width: 44px; height: 3px; background: var(--gold); margin-bottom: 2.75rem; }
+    .sec-rule.center { margin-left: auto; margin-right: auto; }
+
+    .fade { opacity: 0; transform: translateY(28px); transition: opacity .7s ease, transform .7s ease; }
+    .fade.vis { opacity: 1; transform: none; }
+    .d1{transition-delay:.1s} .d2{transition-delay:.18s} .d3{transition-delay:.26s} .d4{transition-delay:.34s} .d5{transition-delay:.42s} .d6{transition-delay:.5s} .d7{transition-delay:.58s} .d8{transition-delay:.66s}
+
+    @media (max-width: 768px) { .sec { padding: 4.5rem 1.5rem; } }
+
+    /* ───── ABOUT ───── */
+    #about { background: var(--white); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+    .about-lead { font-size: 1.05rem; color: #475569; line-height: 1.9; }
+    .about-lead p { margin-bottom: 1.2rem; }
+    .about-lead p:last-child { margin: 0; }
+    .hl { color: var(--navy); font-weight: 600; }
+    .ach-stack { display: flex; flex-direction: column; gap: 1rem; }
+    .ach-card {
+      display: flex; align-items: flex-start; gap: 1.1rem;
+      padding: 1.35rem 1.35rem 1.35rem 1rem;
+      border: 1px solid var(--border); border-left: 4px solid var(--gold);
+      border-radius: 4px; background: var(--bg);
+      transition: box-shadow .25s, transform .25s;
+    }
+    .ach-card:hover { box-shadow: 0 4px 20px rgba(12,28,61,.09); transform: translateX(5px); }
+    .ach-icon {
+      width: 40px; height: 40px; border-radius: 3px;
+      background: var(--navy); display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .ach-icon svg { width: 20px; height: 20px; color: var(--gold); }
+    .ach-card h4 { font-size: .9rem; font-weight: 600; color: var(--navy); margin-bottom: .2rem; }
+    .ach-card p { font-size: .8rem; color: var(--muted); line-height: 1.5; }
+
+    @media (max-width: 900px) { .about-grid { grid-template-columns: 1fr; gap: 3rem; } }
+
+    /* ───── EXPERTISE ───── */
+    #expertise { background: var(--navy); }
+    .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(255px, 1fr)); gap: 1.35rem; }
+    .sk-card {
+      background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.07);
+      border-radius: 4px; padding: 1.65rem;
+      transition: background .25s, border-color .25s;
+    }
+    .sk-card:hover { background: rgba(255,255,255,.07); border-color: rgba(196,146,42,.25); }
+    .sk-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: .85rem; }
+    .sk-name { font-size: .9rem; font-weight: 600; color: #fff; }
+    .sk-badge { font-size: .6rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--gold); background: rgba(196,146,42,.12); padding: .2rem .5rem; border-radius: 2px; }
+    .sk-track { height: 2px; background: rgba(255,255,255,.08); border-radius: 2px; margin-bottom: .8rem; overflow: hidden; }
+    .sk-fill { height: 100%; background: linear-gradient(90deg, var(--gold), var(--gold-lt)); border-radius: 2px; width: 0; transition: width 1.2s cubic-bezier(.4,0,.2,1) .2s; }
+    .sk-card.vis .sk-fill { width: var(--w); }
+    .sk-note { font-size: .77rem; color: rgba(255,255,255,.42); line-height: 1.5; }
+
+    /* ───── PROJECTS ───── */
+    #projects { background: var(--bg); }
+    .proj-intro { font-size: .98rem; color: var(--muted); max-width: 620px; line-height: 1.8; margin-bottom: 3rem; }
+    .proj-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 1.75rem; }
+    .proj-card {
+      background: var(--white); border: 1px solid var(--border); border-radius: 6px;
+      overflow: hidden; display: flex; flex-direction: column;
+      transition: box-shadow .3s, transform .3s;
+    }
+    .proj-card:hover { box-shadow: 0 14px 44px rgba(12,28,61,.11); transform: translateY(-5px); }
+    .proj-preview {
+      height: 165px; background: var(--navy);
+      position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden;
+    }
+    .preview-tag {
+      position: absolute; top: .75rem; right: .75rem;
+      background: rgba(196,146,42,.9); color: var(--navy);
+      font-size: .6rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+      padding: .22rem .5rem; border-radius: 2px;
+    }
+    .proj-body { padding: 1.5rem; flex: 1; display: flex; flex-direction: column; }
+    .proj-type { display: inline-block; background: var(--navy); color: var(--gold-lt); font-size: .62rem; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; padding: .22rem .55rem; border-radius: 2px; margin-bottom: .7rem; }
+    .proj-title { font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 700; color: var(--navy); margin-bottom: .5rem; line-height: 1.25; }
+    .proj-desc { font-size: .83rem; color: var(--muted); line-height: 1.7; margin-bottom: 1rem; flex: 1; }
+    .tag-row { display: flex; flex-wrap: wrap; gap: .35rem; margin-bottom: 1.25rem; }
+    .ptag { background: var(--bg); border: 1px solid var(--border); color: var(--muted); font-size: .67rem; font-weight: 500; padding: .2rem .55rem; border-radius: 2px; letter-spacing: .04em; }
+    .btn-req {
+      width: 100%; background: var(--navy); color: #fff;
+      border: none; padding: .75rem 1.5rem; border-radius: 3px;
+      font-family: 'DM Sans', sans-serif; font-size: .8rem; font-weight: 600;
+      letter-spacing: .09em; text-transform: uppercase; cursor: pointer;
+      display: flex; align-items: center; justify-content: center; gap: .5rem;
+      transition: background .2s;
+    }
+    .btn-req:hover { background: var(--navy-light); }
+    .btn-req svg { width: 13px; height: 13px; }
+
+    /* ───── COLLABORATION ───── */
+    #collab { background: var(--navy); text-align: center; }
+    #collab .sec-rule { margin: 0 auto 2.5rem; }
+    .collab-text { font-size: 1.05rem; color: rgba(255,255,255,.6); max-width: 560px; margin: 0 auto 2.5rem; line-height: 1.85; }
+    .collab-note { font-size: .75rem; color: rgba(255,255,255,.28); margin-top: 1.25rem; letter-spacing: .05em; }
+
+    /* ───── FOOTER ───── */
+    footer {
+      background: #060E1D; padding: 1.75rem 5rem;
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;
+    }
+    .foot-brand { font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 700; color: rgba(255,255,255,.55); }
+    .foot-brand em { color: var(--gold); font-style: normal; }
+    .foot-copy { font-size: .72rem; color: rgba(255,255,255,.22); letter-spacing: .05em; }
+    @media (max-width: 768px) { footer { padding: 1.5rem; flex-direction: column; text-align: center; } }
+
+    /* ───── MODAL ───── */
+    .overlay {
+      position: fixed; inset: 0; z-index: 3000;
+      background: rgba(6,14,29,.88);
+      display: flex; align-items: center; justify-content: center; padding: 1.5rem;
+      opacity: 0; pointer-events: none; transition: opacity .3s;
+    }
+    .overlay.open { opacity: 1; pointer-events: all; }
+    .modal {
+      background: var(--white); border-radius: 6px;
+      width: 100%; max-width: 530px; overflow: hidden;
+      transform: translateY(18px) scale(.98);
+      transition: transform .3s; box-shadow: 0 32px 100px rgba(0,0,0,.5);
+    }
+    .overlay.open .modal { transform: none; }
+    .modal-head {
+      background: var(--navy); padding: 1.75rem 2rem;
+      display: flex; align-items: flex-start; justify-content: space-between;
+    }
+    .modal-head h2 { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; color: #fff; }
+    .modal-head p { font-size: .78rem; color: var(--gold); margin-top: .2rem; font-weight: 500; }
+    .modal-x { background: none; border: none; color: rgba(255,255,255,.4); cursor: pointer; padding: .2rem; transition: color .2s; }
+    .modal-x:hover { color: #fff; }
+    .modal-body { padding: 2rem; }
+    .notice {
+      background: var(--gold-pale); border-left: 3px solid var(--gold);
+      padding: .75rem 1rem; font-size: .78rem; color: #7A5B12;
+      line-height: 1.55; margin-bottom: 1.5rem; border-radius: 0 3px 3px 0;
+    }
+    .fg { margin-bottom: 1.15rem; }
+    .fg label { display: block; font-size: .73rem; font-weight: 700; color: var(--navy); letter-spacing: .08em; text-transform: uppercase; margin-bottom: .35rem; }
+    .fg input, .fg select, .fg textarea {
+      width: 100%; padding: .7rem .9rem; border: 1px solid var(--border); border-radius: 3px;
+      font-family: 'DM Sans', sans-serif; font-size: .88rem; color: var(--text);
+      background: var(--white); outline: none; transition: border-color .2s;
+    }
+    .fg input:focus, .fg select:focus, .fg textarea:focus { border-color: var(--gold); }
+    .fg textarea { resize: vertical; min-height: 80px; }
+    .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    @media (max-width: 480px) { .row2 { grid-template-columns: 1fr; } }
+    .btn-submit {
+      width: 100%; background: var(--gold); color: var(--navy);
+      border: none; padding: .85rem; border-radius: 3px; margin-top: .5rem;
+      font-family: 'DM Sans', sans-serif; font-size: .85rem; font-weight: 700;
+      letter-spacing: .08em; text-transform: uppercase; cursor: pointer; transition: background .2s;
+    }
+    .btn-submit:hover { background: var(--gold-lt); }
+    .btn-submit:disabled { opacity: .55; cursor: not-allowed; }
+    .success { display: none; text-align: center; padding: 2.5rem 2rem; }
+    .success-ring {
+      width: 58px; height: 58px; background: #ECFDF5; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center; margin: 0 auto 1.25rem;
+    }
+    .success-ring svg { width: 28px; height: 28px; color: var(--green); }
+    .success h3 { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--navy); margin-bottom: .5rem; }
+    .success p { font-size: .83rem; color: var(--muted); line-height: 1.65; }
+
+    /* SVG chart previews */
+    .chart-svg { width: 100%; height: 100%; }
+    text.chart-label { font-family: 'DM Sans', sans-serif; }
+  </style>
+</head>
+
+<body>
+
+  <!-- ═══ NAVIGATION ═══ -->
+  <nav id="nav">
+    <div class="nav-logo">S<em>.</em>Sinha</div>
+    <button class="hamburger" id="burger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#expertise">Expertise</a></li>
+      <li><a href="#projects">Work</a></li>
+      <li><a href="#collab" class="cta-pill">Collaborate</a></li>
+    </ul>
+  </nav>
+
+  <!-- ═══ HERO ═══ -->
+  <section class="hero">
+    <div class="hero-shard"></div>
+    <div class="hero-line"></div>
+    <div class="hero-inner">
+      <p class="hero-pre">Central Operations · Analytics Architecture · Retail Intelligence</p>
+      <h1 class="hero-name">Shubhendu<br><em>Sinha</em></h1>
+      <p class="hero-subtitle">Operations leader and analytics architect — converting the complexity of a 700+ store national retail network into measurable intelligence, end‑to‑end automation, and decision‑ready insight.</p>
+
+      <div class="hero-stats">
+        <div class="h-stat"><strong>700<sup style="font-size:1.1rem;vertical-align:super">+</sup></strong><span>Stores Overseen</span></div>
+        <div class="h-stat"><strong>5×</strong><span>COO‑rated EE</span></div>
+        <div class="h-stat"><strong>15+</strong><span>Years in Retail</span></div>
+        <div class="h-stat"><strong>Zero</strong><span>Vendor Dependency</span></div>
+      </div>
+
+      <div class="hero-ctas">
+        <a href="#projects" class="btn btn-gold">View My Work</a>
+        <a href="#collab" class="btn btn-ghost">Collaborate</a>
+      </div>
+    </div>
+    <div class="scroll-cue">
+      <span>Scroll</span>
+      <div class="scroll-tick"></div>
+    </div>
+  </section>
+
+  <!-- ═══ ABOUT ═══ -->
+  <section class="sec" id="about">
+    <div class="sec-inner">
+      <div class="about-grid">
+        <!-- Left: bio -->
+        <div class="fade">
+          <p class="sec-label">About</p>
+          <h2 class="sec-title">Where Operations Meets Intelligence</h2>
+          <div class="sec-rule"></div>
+          <div class="about-lead">
+            <p>I lead <span class="hl">Central Operations</span> for one of India's fastest‑growing retail chains, carrying end‑to‑end accountability for store performance analytics, reporting infrastructure, and operational technology across a <span class="hl">700+ store national footprint.</span></p>
+            <p>My work sits at the intersection of <span class="hl">retail strategy and technology execution.</span> I design the analytical backbone that enables HQ teams, regional managers, and store leadership to act on insight — not assumption.</p>
+            <p>From enterprise dashboards to zero‑touch automation pipelines, every solution I build is <span class="hl">conceived, designed, and delivered independently</span> — without external vendors, development teams, or recurring software costs.</p>
+            <p>I am a <span class="hl">Bharti Walmart / Scope Certified</span> retail management professional, recognised with five consecutive <span class="hl">Exceeds Expectation ratings</span> by the COO for sustained operational impact.</p>
+          </div>
+        </div>
+
+        <!-- Right: achievement cards -->
+        <div class="ach-stack">
+          <div class="ach-card fade d1">
+            <div class="ach-icon">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
+            </div>
+            <div>
+              <h4>5× Consecutive EE Rating</h4>
+              <p>Exceeds Expectation — awarded by the COO for consistent, measurable delivery above organisational benchmarks.</p>
+            </div>
+          </div>
+
+          <div class="ach-card fade d2">
+            <div class="ach-icon">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+            </div>
+            <div>
+              <h4>National Store Network Oversight</h4>
+              <p>Central accountability spanning 700+ stores, covering operations analytics, escalation management, and performance governance.</p>
+            </div>
+          </div>
+
+          <div class="ach-card fade d3">
+            <div class="ach-icon">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+            </div>
+            <div>
+              <h4>Bharti Walmart / Scope Certified</h4>
+              <p>Rigorous retail management certification — a benchmark of operational competence and leadership capability.</p>
+            </div>
+          </div>
+
+          <div class="ach-card fade d4">
+            <div class="ach-icon">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+            </div>
+            <div>
+              <h4>Self‑Built Technology Stack</h4>
+              <p>Every tool, dashboard, and automation is designed and delivered independently — zero vendor cost, full institutional ownership.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ EXPERTISE ═══ -->
+  <section class="sec" id="expertise">
+    <div class="sec-inner">
+      <p class="sec-label fade">Core Competencies</p>
+      <h2 class="sec-title on-dark fade">What I Build &amp; How I Work</h2>
+      <div class="sec-rule fade"></div>
+
+      <div class="skills-grid">
+
+        <div class="sk-card fade d1">
+          <div class="sk-head"><span class="sk-name">Retail Analytics &amp; Operations</span><span class="sk-badge">Expert</span></div>
+          <div class="sk-track"><div class="sk-fill" style="--w:96%"></div></div>
+          <p class="sk-note">Multi-store KPI tracking, LFL benchmarking, SWOT intelligence, and real-time performance governance at national scale.</p>
+        </div>
+
+        <div class="sk-card fade d2">
+          <div class="sk-head"><span class="sk-name">SAP BW / Business Intelligence</span><span class="sk-badge">Expert</span></div>
+          <div class="sk-track"><div class="sk-fill" style="--w:93%"></div></div>
+          <p class="sk-note">Deep expertise in SAP Business Warehouse — report extraction, data interpretation, and operational integration across 19+ report types.</p>
+        </div>
+
+        <div class="sk-card fade d3">
+          <div class="sk-head"><span class="sk-name">Advanced Excel &amp; VBA</span><span class="sk-badge">Expert</span></div>
+          <div class="sk-track"><div class="sk-fill" style="--w:97%"></div></div>
+          <p class="sk-note">Complex macro automation, pivot intelligence, cross-sheet consolidation, and enterprise-grade VBA systems for operations workflows.</p>
+        </div>
+
+        <div class="sk-card fade d4">
+          <div class="sk-head"><span class="sk-name">Power Automate Desktop (PAD)</span><span class="sk-badge">Advanced</span></div>
+          <div class="sk-track"><div class="sk-fill" style="--w:88%"></div></div>
+          <p class="sk-note">End-to-end process automation — portal data extraction, file orchestration, and scheduled enterprise workflows with zero manual intervention.</p>
+        </div>
+
+        <div class="sk-card fade d5">
+          <div class="sk-head"><span class="sk-name">HTML / JS Dashboard Development</span><span class="sk-badge">Advanced</span></div>
+          <div class="sk-track"><div class="sk-fill" style="--w:85%"></div></div>
+          <p class="sk-note">Browser-native analytics platforms with cascade filters, chart engines, export functions, and SWOT / correlation modules — no backend required.</p>
+        </div>
+
+        <div class="sk-card fade d6">
+          <div class="sk-head"><span class="sk-name">PowerShell Scripting</span><span class="sk-badge">Advanced</span></div>
+          <div class="sk-track"><div class="sk-fill" style="--w:82%"></div></div>
+          <p class="sk-note">Automated report generation, Excel manipulation via COM objects, Outlook email dispatch, and no-admin scheduled task execution.</p>
+        </div>
+
+        <div class="sk-card fade d7">
+          <div class="sk-head"><span class="sk-name">Power BI &amp; Tableau</span><span class="sk-badge">Advanced</span></div>
+          <div class="sk-track"><div class="sk-fill" style="--w:84%"></div></div>
+          <p class="sk-note">Interactive reporting, DAX modelling, and visual intelligence design for retail performance data across multi-dimensional hierarchies.</p>
+        </div>
+
+        <div class="sk-card fade d8">
+          <div class="sk-head"><span class="sk-name">Data Architecture &amp; Reporting Design</span><span class="sk-badge">Expert</span></div>
+          <div class="sk-track"><div class="sk-fill" style="--w:91%"></div></div>
+          <p class="sk-note">End-to-end reporting ecosystem design — from data source to delivery, including M365 integration, SharePoint pipelines, and Power Query.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ PROJECTS ═══ -->
+  <section class="sec" id="projects">
+    <div class="sec-inner">
+      <p class="sec-label fade">Portfolio</p>
+      <h2 class="sec-title fade">Tools &amp; Systems Built</h2>
+      <div class="sec-rule fade"></div>
+      <p class="proj-intro fade">Each solution was independently conceived, designed, and delivered to address real operational gaps. Previews below use representative sample data. Access to source files is managed — submit a request for review.</p>
+
+      <div class="proj-grid">
+
+        <!-- PROJECT 1: StoreIntelligence Dashboard -->
+        <div class="proj-card fade d1">
+          <div class="proj-preview">
+            <span class="preview-tag">Sample Preview</span>
+            <!-- Mini heatmap bar chart -->
+            <svg class="chart-svg" viewBox="0 0 340 165" xmlns="http://www.w3.org/2000/svg">
+              <!-- BG gradient overlay -->
+              <defs>
+                <linearGradient id="g1" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#162B52"/>
+                  <stop offset="100%" stop-color="#0C1C3D"/>
+                </linearGradient>
+              </defs>
+              <rect width="340" height="165" fill="url(#g1)"/>
+              <!-- Grid lines -->
+              <line x1="30" y1="20" x2="330" y2="20" stroke="rgba(255,255,255,.06)" stroke-width="1"/>
+              <line x1="30" y1="55" x2="330" y2="55" stroke="rgba(255,255,255,.06)" stroke-width="1"/>
+              <line x1="30" y1="90" x2="330" y2="90" stroke="rgba(255,255,255,.06)" stroke-width="1"/>
+              <line x1="30" y1="125" x2="330" y2="125" stroke="rgba(255,255,255,.06)" stroke-width="1"/>
+              <!-- Title -->
+              <text x="16" y="12" fill="rgba(255,255,255,.4)" font-size="7" letter-spacing="1.5" font-family="DM Sans, sans-serif" text-transform="uppercase">STORE PERFORMANCE · SAMPLE DATA</text>
+              <!-- Bar 1 -->
+              <rect x="42" y="55" width="28" height="70" rx="2" fill="#0D9463" opacity=".85"/>
+              <text x="56" y="51" fill="#0D9463" font-size="7.5" text-anchor="middle" font-family="DM Sans">+8.2%</text>
+              <text x="56" y="148" fill="rgba(255,255,255,.4)" font-size="7" text-anchor="middle" font-family="DM Sans">S-001</text>
+              <!-- Bar 2 -->
+              <rect x="88" y="82" width="28" height="43" rx="2" fill="#C8312C" opacity=".85"/>
+              <text x="102" y="78" fill="#C8312C" font-size="7.5" text-anchor="middle" font-family="DM Sans">-2.1%</text>
+              <text x="102" y="148" fill="rgba(255,255,255,.4)" font-size="7" text-anchor="middle" font-family="DM Sans">S-042</text>
+              <!-- Bar 3 -->
+              <rect x="134" y="45" width="28" height="80" rx="2" fill="#0D9463" opacity=".85"/>
+              <text x="148" y="41" fill="#0D9463" font-size="7.5" text-anchor="middle" font-family="DM Sans">+12.4%</text>
+              <text x="148" y="148" fill="rgba(255,255,255,.4)" font-size="7" text-anchor="middle" font-family="DM Sans">S-118</text>
+              <!-- Bar 4 -->
+              <rect x="180" y="95" width="28" height="30" rx="2" fill="#C8312C" opacity=".85"/>
+              <text x="194" y="91" fill="#C8312C" font-size="7.5" text-anchor="middle" font-family="DM Sans">-4.8%</text>
+              <text x="194" y="148" fill="rgba(255,255,255,.4)" font-size="7" text-anchor="middle" font-family="DM Sans">S-215</text>
+              <!-- Bar 5 -->
+              <rect x="226" y="60" width="28" height="65" rx="2" fill="#0D9463" opacity=".85"/>
+              <text x="240" y="56" fill="#0D9463" font-size="7.5" text-anchor="middle" font-family="DM Sans">+6.7%</text>
+              <text x="240" y="148" fill="rgba(255,255,255,.4)" font-size="7" text-anchor="middle" font-family="DM Sans">S-307</text>
+              <!-- Bar 6 -->
+              <rect x="272" y="73" width="28" height="52" rx="2" fill="#E5B84C" opacity=".85"/>
+              <text x="286" y="69" fill="#E5B84C" font-size="7.5" text-anchor="middle" font-family="DM Sans">+0.5%</text>
+              <text x="286" y="148" fill="rgba(255,255,255,.4)" font-size="7" text-anchor="middle" font-family="DM Sans">S-389</text>
+              <!-- Axis line -->
+              <line x1="30" y1="125" x2="330" y2="125" stroke="rgba(255,255,255,.15)" stroke-width="1"/>
+            </svg>
+          </div>
+          <div class="proj-body">
+            <span class="proj-type">HTML · JavaScript · Chart.js</span>
+            <h3 class="proj-title">StoreIntelligence Dashboard v5</h3>
+            <p class="proj-desc">Single-file browser-based analytics platform for 700+ store retail operations. Features multi-select cascade filters (ZFM → AM → Store), SWOT quadrant engine, Correlation Engine for division-to-store impact analysis, LFL benchmarking, and Calibri-formatted Excel/print export.</p>
+            <div class="tag-row">
+              <span class="ptag">Cascade Filters</span><span class="ptag">SWOT Engine</span><span class="ptag">Correlation Analysis</span><span class="ptag">LFL Logic</span><span class="ptag">Excel Export</span>
+            </div>
+            <button class="btn-req" onclick="openModal('StoreIntelligence Dashboard v5')">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+              Request Access
+            </button>
+          </div>
+        </div>
+
+        <!-- PROJECT 2: Hourly Sales Automation -->
+        <div class="proj-card fade d2">
+          <div class="proj-preview">
+            <span class="preview-tag">Sample Preview</span>
+            <svg class="chart-svg" viewBox="0 0 340 165" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="g2" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#162B52"/><stop offset="100%" stop-color="#0C1C3D"/>
+                </linearGradient>
+                <linearGradient id="sparkFill" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#C4922A" stop-opacity=".35"/>
+                  <stop offset="100%" stop-color="#C4922A" stop-opacity="0"/>
+                </linearGradient>
+              </defs>
+              <rect width="340" height="165" fill="url(#g2)"/>
+              <text x="16" y="14" fill="rgba(255,255,255,.4)" font-size="7" letter-spacing="1.5" font-family="DM Sans">HOURLY SALES · AUTOMATION PIPELINE · SAMPLE</text>
+              <!-- Sparkline area fill -->
+              <polygon points="20,120 50,105 80,95 110,108 140,82 170,72 200,85 230,68 260,78 300,62 320,70 320,130 20,130"
+                fill="url(#sparkFill)"/>
+              <!-- Sparkline -->
+              <polyline points="20,120 50,105 80,95 110,108 140,82 170,72 200,85 230,68 260,78 300,62 320,70"
+                fill="none" stroke="#C4922A" stroke-width="2" stroke-linejoin="round"/>
+              <!-- Hour labels -->
+              <text x="20" y="145" fill="rgba(255,255,255,.3)" font-size="7" text-anchor="middle" font-family="DM Sans">11</text>
+              <text x="80" y="145" fill="rgba(255,255,255,.3)" font-size="7" text-anchor="middle" font-family="DM Sans">13</text>
+              <text x="140" y="145" fill="rgba(255,255,255,.3)" font-size="7" text-anchor="middle" font-family="DM Sans">15</text>
+              <text x="200" y="145" fill="rgba(255,255,255,.3)" font-size="7" text-anchor="middle" font-family="DM Sans">17</text>
+              <text x="260" y="145" fill="rgba(255,255,255,.3)" font-size="7" text-anchor="middle" font-family="DM Sans">19</text>
+              <text x="320" y="145" fill="rgba(255,255,255,.3)" font-size="7" text-anchor="middle" font-family="DM Sans">22</text>
+              <!-- Dot at latest point -->
+              <circle cx="320" cy="70" r="3.5" fill="#C4922A"/>
+              <circle cx="320" cy="70" r="6" fill="none" stroke="#C4922A" stroke-width="1" opacity=".4"/>
+              <!-- Status pills -->
+              <rect x="16" y="22" width="90" height="16" rx="3" fill="rgba(13,148,99,.15)" stroke="rgba(13,148,99,.4)" stroke-width="1"/>
+              <text x="61" y="33" fill="#0D9463" font-size="7.5" text-anchor="middle" font-family="DM Sans" font-weight="600">✓ Email Dispatched</text>
+              <rect x="116" y="22" width="78" height="16" rx="3" fill="rgba(196,146,42,.12)" stroke="rgba(196,146,42,.4)" stroke-width="1"/>
+              <text x="155" y="33" fill="#C4922A" font-size="7.5" text-anchor="middle" font-family="DM Sans" font-weight="600">⏱ Next: 19:09</text>
+            </svg>
+          </div>
+          <div class="proj-body">
+            <span class="proj-type">PAD · PowerShell · Outlook · VBS</span>
+            <h3 class="proj-title">Hourly Sales Automation Engine</h3>
+            <p class="proj-desc">Zero-touch automation system covering BW portal data extraction, Excel transformation, pivot refresh, and formatted Outlook email dispatch. Scheduled via no-admin VBS daemon with hourly triggers (11:09–22:09), lock-screen detection, live log window, and tray icon feedback.</p>
+            <div class="tag-row">
+              <span class="ptag">PAD Flow</span><span class="ptag">PowerShell COM</span><span class="ptag">VBS Scheduler</span><span class="ptag">Outlook Email</span><span class="ptag">CopyPicture</span>
+            </div>
+            <button class="btn-req" onclick="openModal('Hourly Sales Automation Engine')">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+              Request Access
+            </button>
+          </div>
+        </div>
+
+        <!-- PROJECT 3: Daily Comms Summary -->
+        <div class="proj-card fade d3">
+          <div class="proj-preview">
+            <span class="preview-tag">Sample Preview</span>
+            <svg class="chart-svg" viewBox="0 0 340 165" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="g3" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#162B52"/><stop offset="100%" stop-color="#0C1C3D"/>
+                </linearGradient>
+              </defs>
+              <rect width="340" height="165" fill="url(#g3)"/>
+              <text x="16" y="14" fill="rgba(255,255,255,.4)" font-size="7" letter-spacing="1.5" font-family="DM Sans">DAILY COMMS SUMMARY · SAMPLE OUTPUT</text>
+              <!-- Header row -->
+              <rect x="12" y="22" width="316" height="18" rx="2" fill="rgba(196,146,42,.12)"/>
+              <text x="18" y="34" fill="#C4922A" font-size="7.5" font-family="DM Sans" font-weight="700">#</text>
+              <text x="34" y="34" fill="#C4922A" font-size="7.5" font-family="DM Sans" font-weight="700">SUBJECT</text>
+              <text x="200" y="34" fill="#C4922A" font-size="7.5" font-family="DM Sans" font-weight="700">TYPE</text>
+              <text x="252" y="34" fill="#C4922A" font-size="7.5" font-family="DM Sans" font-weight="700">STORES</text>
+              <!-- Row 1 -->
+              <rect x="12" y="42" width="316" height="17" rx="1" fill="rgba(255,255,255,.03)"/>
+              <text x="18" y="53" fill="rgba(255,255,255,.5)" font-size="7" font-family="DM Sans">01</text>
+              <text x="34" y="53" fill="rgba(255,255,255,.75)" font-size="7" font-family="DM Sans">New Offer Launch – Apparel Division</text>
+              <rect x="196" y="44" width="42" height="13" rx="2" fill="rgba(196,146,42,.2)"/>
+              <text x="217" y="53" fill="#E5B84C" font-size="6.5" font-family="DM Sans" font-weight="700" text-anchor="middle">ACTION</text>
+              <text x="260" y="53" fill="rgba(255,255,255,.5)" font-size="7" font-family="DM Sans">247</text>
+              <!-- Row 2 -->
+              <rect x="12" y="61" width="316" height="17" rx="1" fill="rgba(255,255,255,.015)"/>
+              <text x="18" y="72" fill="rgba(255,255,255,.5)" font-size="7" font-family="DM Sans">02</text>
+              <text x="34" y="72" fill="rgba(255,255,255,.75)" font-size="7" font-family="DM Sans">Zero Sale SKU – Escalation Alert GM</text>
+              <rect x="196" y="63" width="42" height="13" rx="2" fill="rgba(200,49,44,.2)"/>
+              <text x="217" y="72" fill="#E57373" font-size="6.5" font-family="DM Sans" font-weight="700" text-anchor="middle">ACTION</text>
+              <text x="260" y="72" fill="rgba(255,255,255,.5)" font-size="7" font-family="DM Sans">83</text>
+              <!-- Row 3 -->
+              <rect x="12" y="80" width="316" height="17" rx="1" fill="rgba(255,255,255,.03)"/>
+              <text x="18" y="91" fill="rgba(255,255,255,.5)" font-size="7" font-family="DM Sans">03</text>
+              <text x="34" y="91" fill="rgba(255,255,255,.75)" font-size="7" font-family="DM Sans">Revised Signage – Effective from 12-Apr</text>
+              <rect x="196" y="82" width="42" height="13" rx="2" fill="rgba(196,146,42,.2)"/>
+              <text x="217" y="91" fill="#E5B84C" font-size="6.5" font-family="DM Sans" font-weight="700" text-anchor="middle">ACTION</text>
+              <text x="260" y="91" fill="rgba(255,255,255,.5)" font-size="7" font-family="DM Sans">All</text>
+              <!-- Row 4 -->
+              <rect x="12" y="99" width="316" height="17" rx="1" fill="rgba(255,255,255,.015)"/>
+              <text x="18" y="110" fill="rgba(255,255,255,.5)" font-size="7" font-family="DM Sans">04</text>
+              <text x="34" y="110" fill="rgba(255,255,255,.75)" font-size="7" font-family="DM Sans">Delivery Status Update – Region North</text>
+              <rect x="196" y="101" width="35" height="13" rx="2" fill="rgba(13,148,99,.15)"/>
+              <text x="213" y="110" fill="#4ADE80" font-size="6.5" font-family="DM Sans" font-weight="700" text-anchor="middle">INFO</text>
+              <text x="260" y="110" fill="rgba(255,255,255,.5)" font-size="7" font-family="DM Sans">All</text>
+              <!-- Footer summary -->
+              <rect x="12" y="124" width="316" height="30" rx="2" fill="rgba(255,255,255,.03)" stroke="rgba(255,255,255,.06)" stroke-width="1"/>
+              <text x="18" y="135" fill="rgba(255,255,255,.35)" font-size="7" font-family="DM Sans">Auto-generated · 9:30 PM daily</text>
+              <text x="18" y="146" fill="rgba(196,146,42,.6)" font-size="7" font-family="DM Sans" font-weight="600">4 communications · 3 action items · 1 info</text>
+            </svg>
+          </div>
+          <div class="proj-body">
+            <span class="proj-type">Outlook VBA · Excel</span>
+            <h3 class="proj-title">Daily Comms Summary Engine</h3>
+            <p class="proj-desc">Automated Outlook macro that scans the Sent folder, categorises communications by keyword-driven ACTION / INFO logic, and dispatches a structured daily summary to all field leadership. Runs at 9:30 PM with zero manual input across SM, RFM, and ZFM distribution lists.</p>
+            <div class="tag-row">
+              <span class="ptag">Outlook VBA</span><span class="ptag">Keyword Engine</span><span class="ptag">Auto Dispatch</span><span class="ptag">Distribution Lists</span>
+            </div>
+            <button class="btn-req" onclick="openModal('Daily Comms Summary Engine')">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+              Request Access
+            </button>
+          </div>
+        </div>
+
+        <!-- PROJECT 4: BW Consolidator -->
+        <div class="proj-card fade d4">
+          <div class="proj-preview">
+            <span class="preview-tag">Sample Preview</span>
+            <svg class="chart-svg" viewBox="0 0 340 165" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="g4" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#162B52"/><stop offset="100%" stop-color="#0C1C3D"/>
+                </linearGradient>
+              </defs>
+              <rect width="340" height="165" fill="url(#g4)"/>
+              <text x="16" y="14" fill="rgba(255,255,255,.4)" font-size="7" letter-spacing="1.5" font-family="DM Sans">SAP BW CONSOLIDATOR · DATA PIPELINE · SAMPLE</text>
+              <!-- Input nodes -->
+              <rect x="12" y="30" width="90" height="22" rx="3" fill="rgba(255,255,255,.06)" stroke="rgba(196,146,42,.3)" stroke-width="1"/>
+              <text x="57" y="44" fill="rgba(255,255,255,.7)" font-size="7.5" text-anchor="middle" font-family="DM Sans">Store-wise MC Sales</text>
+              <rect x="12" y="60" width="90" height="22" rx="3" fill="rgba(255,255,255,.06)" stroke="rgba(196,146,42,.3)" stroke-width="1"/>
+              <text x="57" y="74" fill="rgba(255,255,255,.7)" font-size="7.5" text-anchor="middle" font-family="DM Sans">TGT vs Ach Report</text>
+              <rect x="12" y="90" width="90" height="22" rx="3" fill="rgba(255,255,255,.06)" stroke="rgba(196,146,42,.3)" stroke-width="1"/>
+              <text x="57" y="104" fill="rgba(255,255,255,.7)" font-size="7.5" text-anchor="middle" font-family="DM Sans">Zero Sale SKU (3)</text>
+              <rect x="12" y="120" width="90" height="22" rx="3" fill="rgba(255,255,255,.06)" stroke="rgba(196,146,42,.3)" stroke-width="1"/>
+              <text x="57" y="134" fill="rgba(255,255,255,.7)" font-size="7.5" text-anchor="middle" font-family="DM Sans">Store Master Data</text>
+              <!-- Connector lines -->
+              <line x1="102" y1="41" x2="148" y2="82" stroke="rgba(196,146,42,.3)" stroke-width="1.5" stroke-dasharray="3 2"/>
+              <line x1="102" y1="71" x2="148" y2="82" stroke="rgba(196,146,42,.3)" stroke-width="1.5" stroke-dasharray="3 2"/>
+              <line x1="102" y1="101" x2="148" y2="82" stroke="rgba(196,146,42,.3)" stroke-width="1.5" stroke-dasharray="3 2"/>
+              <line x1="102" y1="131" x2="148" y2="82" stroke="rgba(196,146,42,.3)" stroke-width="1.5" stroke-dasharray="3 2"/>
+              <!-- Central processor -->
+              <rect x="148" y="66" width="58" height="32" rx="4" fill="rgba(196,146,42,.18)" stroke="rgba(196,146,42,.6)" stroke-width="1.5"/>
+              <text x="177" y="80" fill="#E5B84C" font-size="8" text-anchor="middle" font-family="DM Sans" font-weight="700">VBA</text>
+              <text x="177" y="91" fill="rgba(196,146,42,.7)" font-size="6.5" text-anchor="middle" font-family="DM Sans">Consolidator</text>
+              <!-- Output connectors -->
+              <line x1="206" y1="78" x2="224" y2="60" stroke="rgba(13,148,99,.5)" stroke-width="1.5" stroke-dasharray="3 2"/>
+              <line x1="206" y1="82" x2="224" y2="90" stroke="rgba(13,148,99,.5)" stroke-width="1.5" stroke-dasharray="3 2"/>
+              <line x1="206" y1="82" x2="224" y2="118" stroke="rgba(13,148,99,.5)" stroke-width="1.5" stroke-dasharray="3 2"/>
+              <!-- Output nodes -->
+              <rect x="224" y="47" width="104" height="24" rx="3" fill="rgba(13,148,99,.12)" stroke="rgba(13,148,99,.35)" stroke-width="1"/>
+              <text x="276" y="62" fill="#4ADE80" font-size="7.5" text-anchor="middle" font-family="DM Sans">Intra-Region Heatmap</text>
+              <rect x="224" y="79" width="104" height="24" rx="3" fill="rgba(13,148,99,.12)" stroke="rgba(13,148,99,.35)" stroke-width="1"/>
+              <text x="276" y="94" fill="#4ADE80" font-size="7.5" text-anchor="middle" font-family="DM Sans">Peer Benchmarking</text>
+              <rect x="224" y="109" width="104" height="24" rx="3" fill="rgba(13,148,99,.12)" stroke="rgba(13,148,99,.35)" stroke-width="1"/>
+              <text x="276" y="124" fill="#4ADE80" font-size="7.5" text-anchor="middle" font-family="DM Sans">Escalation Emailer</text>
+            </svg>
+          </div>
+          <div class="proj-body">
+            <span class="proj-type">Excel · VBA · SAP BW</span>
+            <h3 class="proj-title">BW Data Consolidator Suite</h3>
+            <p class="proj-desc">Five-module VBA system consolidating six SAP BW report types into a unified master workbook. Modules cover intra-region store vs MC heatmaps, peer benchmarking, zero-sale SKU escalation emails to AMs, and MC mix-shift anomaly detection — all keyed on Store Code + Store Name.</p>
+            <div class="tag-row">
+              <span class="ptag">SAP BW</span><span class="ptag">5-Module VBA</span><span class="ptag">Heatmap</span><span class="ptag">Anomaly Detection</span><span class="ptag">Auto Email</span>
+            </div>
+            <button class="btn-req" onclick="openModal('BW Data Consolidator Suite')">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+              Request Access
+            </button>
+          </div>
+        </div>
+
+        <!-- PROJECT 5: Store Ops Portal -->
+        <div class="proj-card fade d5">
+          <div class="proj-preview">
+            <span class="preview-tag">Sample Preview</span>
+            <svg class="chart-svg" viewBox="0 0 340 165" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="g5" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#162B52"/><stop offset="100%" stop-color="#0C1C3D"/>
+                </linearGradient>
+              </defs>
+              <rect width="340" height="165" fill="url(#g5)"/>
+              <text x="16" y="14" fill="rgba(255,255,255,.4)" font-size="7" letter-spacing="1.5" font-family="DM Sans">STORE OPS DATA PORTAL · ARCHITECTURE · SAMPLE</text>
+              <!-- Step 1 -->
+              <rect x="14" y="35" width="72" height="95" rx="4" fill="rgba(255,255,255,.05)" stroke="rgba(196,146,42,.25)" stroke-width="1"/>
+              <text x="50" y="58" fill="rgba(255,255,255,.8)" font-size="8" text-anchor="middle" font-family="DM Sans" font-weight="600">MS Forms</text>
+              <!-- form lines -->
+              <rect x="22" y="65" width="44" height="4" rx="1" fill="rgba(255,255,255,.15)"/>
+              <rect x="22" y="74" width="36" height="4" rx="1" fill="rgba(255,255,255,.15)"/>
+              <rect x="22" y="83" width="44" height="4" rx="1" fill="rgba(255,255,255,.15)"/>
+              <rect x="22" y="92" width="30" height="4" rx="1" fill="rgba(255,255,255,.15)"/>
+              <rect x="22" y="110" width="44" height="12" rx="2" fill="rgba(196,146,42,.35)"/>
+              <text x="44" y="119" fill="#fff" font-size="7" text-anchor="middle" font-family="DM Sans" font-weight="600">Submit</text>
+              <!-- Arrow 1 -->
+              <line x1="87" y1="82" x2="112" y2="82" stroke="rgba(196,146,42,.5)" stroke-width="1.5"/>
+              <polygon points="112,78 120,82 112,86" fill="rgba(196,146,42,.5)"/>
+              <!-- Step 2 -->
+              <rect x="120" y="35" width="76" height="95" rx="4" fill="rgba(255,255,255,.05)" stroke="rgba(196,146,42,.25)" stroke-width="1"/>
+              <text x="158" y="58" fill="rgba(255,255,255,.8)" font-size="8" text-anchor="middle" font-family="DM Sans" font-weight="600">SharePoint List</text>
+              <!-- list rows -->
+              <rect x="128" y="66" width="60" height="7" rx="1" fill="rgba(255,255,255,.08)"/>
+              <rect x="128" y="76" width="60" height="7" rx="1" fill="rgba(255,255,255,.05)"/>
+              <rect x="128" y="86" width="60" height="7" rx="1" fill="rgba(255,255,255,.08)"/>
+              <rect x="128" y="96" width="60" height="7" rx="1" fill="rgba(255,255,255,.05)"/>
+              <rect x="128" y="106" width="60" height="7" rx="1" fill="rgba(255,255,255,.08)"/>
+              <!-- Arrow 2 -->
+              <line x1="197" y1="82" x2="220" y2="82" stroke="rgba(196,146,42,.5)" stroke-width="1.5"/>
+              <polygon points="220,78 228,82 220,86" fill="rgba(196,146,42,.5)"/>
+              <!-- Step 3 -->
+              <rect x="228" y="35" width="98" height="95" rx="4" fill="rgba(13,148,99,.08)" stroke="rgba(13,148,99,.3)" stroke-width="1"/>
+              <text x="277" y="55" fill="rgba(255,255,255,.8)" font-size="8" text-anchor="middle" font-family="DM Sans" font-weight="600">Power Query</text>
+              <text x="277" y="65" fill="rgba(255,255,255,.4)" font-size="6.5" text-anchor="middle" font-family="DM Sans">→ Excel Report</text>
+              <!-- chart icon in Excel -->
+              <rect x="242" y="72" width="10" height="16" rx="1" fill="#0D9463" opacity=".7"/>
+              <rect x="255" y="80" width="10" height="8" rx="1" fill="#0D9463" opacity=".5"/>
+              <rect x="268" y="76" width="10" height="12" rx="1" fill="#0D9463" opacity=".7"/>
+              <rect x="281" y="68" width="10" height="20" rx="1" fill="#0D9463" opacity=".85"/>
+              <rect x="294" y="73" width="10" height="15" rx="1" fill="#0D9463" opacity=".6"/>
+              <text x="277" y="110" fill="#4ADE80" font-size="7" text-anchor="middle" font-family="DM Sans" font-weight="600">✓ Live Dashboard</text>
+              <text x="277" y="120" fill="rgba(255,255,255,.3)" font-size="6.5" text-anchor="middle" font-family="DM Sans">Auto-refreshed</text>
+            </svg>
+          </div>
+          <div class="proj-body">
+            <span class="proj-type">MS Forms · SharePoint · Power Query</span>
+            <h3 class="proj-title">Store Operations Data Portal</h3>
+            <p class="proj-desc">Structured M365-native data collection portal using MS Forms → SharePoint Lists → Power Query pipeline. Designed for Store Key Handover, Gate Entry, and operational compliance data — delivering a live, auto-refreshed dashboard with no manual data entry or file-sharing overhead.</p>
+            <div class="tag-row">
+              <span class="ptag">MS Forms</span><span class="ptag">SharePoint</span><span class="ptag">Power Query</span><span class="ptag">M365 Native</span><span class="ptag">Zero IT Cost</span>
+            </div>
+            <button class="btn-req" onclick="openModal('Store Operations Data Portal')">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+              Request Access
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ COLLABORATE ═══ -->
+  <section class="sec" id="collab">
+    <div class="sec-inner">
+      <p class="sec-label fade">Collaboration</p>
+      <h2 class="sec-title on-dark fade">Let's Build Something Together</h2>
+      <div class="sec-rule center fade"></div>
+      <p class="collab-text fade">Open to consulting engagements, peer knowledge exchange on retail analytics &amp; automation, and connecting with teams solving complex operational challenges at scale. All conversations are confidential.</p>
+      <button class="btn btn-gold fade" onclick="openModal('General Collaboration')">Send a Request</button>
+      <p class="collab-note fade">All requests are reviewed personally. Response within 48 hours.</p>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer>
+    <div class="foot-brand">S<em>.</em>Sinha</div>
+    <p class="foot-copy">© 2025 Shubhendu Sinha &nbsp;·&nbsp; All Rights Reserved &nbsp;·&nbsp; Delhi NCR, India</p>
+  </footer>
+
+  <!-- ═══ MODAL ═══ -->
+  <div class="overlay" id="overlay" onclick="maybeClose(event)">
+    <div class="modal" role="dialog" aria-modal="true">
+      <div class="modal-head">
+        <div>
+          <h2>Request File Access</h2>
+          <p id="modal-proj">—</p>
+        </div>
+        <button class="modal-x" onclick="closeModal()" aria-label="Close">
+          <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div id="form-wrap">
+          <div class="notice">
+            📋 File access is managed personally. Submit your details and Shubhendu Sinha will review your request. Approved requests receive a secure download link by email within 48 hours.
+          </div>
+          <!-- ⚙️  Replace YOUR_FORMSPREE_ID below with your code from formspree.io -->
+          <form id="req-form" action="https://formspree.io/f/xykbblyk" method="POST">
+            <input type="hidden" name="_subject" value="Portfolio File Access Request">
+            <input type="hidden" name="project" id="fp-project">
+            <div class="row2">
+              <div class="fg">
+                <label for="f-name">Full Name *</label>
+                <input type="text" id="f-name" name="name" placeholder="Your name" required>
+              </div>
+              <div class="fg">
+                <label for="f-org">Organisation</label>
+                <input type="text" id="f-org" name="organisation" placeholder="Company / Institute">
+              </div>
+            </div>
+            <div class="fg">
+              <label for="f-email">Email Address *</label>
+              <input type="email" id="f-email" name="email" placeholder="you@company.com" required>
+            </div>
+            <div class="fg">
+              <label for="f-purpose">Purpose of Request *</label>
+              <select id="f-purpose" name="purpose" required>
+                <option value="">— Select Purpose —</option>
+                <option>Academic / Research Study</option>
+                <option>Professional Reference</option>
+                <option>Business Evaluation</option>
+                <option>Retail Technology Learning</option>
+                <option>Collaboration Discussion</option>
+                <option>Recruitment / Talent Evaluation</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="fg">
+              <label for="f-msg">Brief Note</label>
+              <textarea id="f-msg" name="message" placeholder="Tell me a bit about your interest or use case..."></textarea>
+            </div>
+            <button type="submit" class="btn-submit" id="sub-btn">Submit Access Request</button>
+          </form>
+        </div>
+        <div class="success" id="form-success">
+          <div class="success-ring">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+          </div>
+          <h3>Request Received</h3>
+          <p>Thank you. Your access request has been logged and will be reviewed personally. If approved, a secure download link will be sent to your email address within 48 hours.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ─── NAV ───
+    const nav = document.getElementById('nav');
+    const burger = document.getElementById('burger');
+    const navLinks = document.getElementById('nav-links');
+
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('solid', window.scrollY > 60);
+    });
+
+    burger.addEventListener('click', () => navLinks.classList.toggle('open'));
+    navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+    // ─── SCROLL ANIMATIONS ───
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('vis');
+          // Skill bar animation
+          const bar = e.target.querySelector('.sk-fill');
+          if (bar) e.target.classList.add('vis'); // triggers CSS --w
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+
+    document.querySelectorAll('.fade, .sk-card').forEach(el => io.observe(el));
+
+    // ─── MODAL ───
+    function openModal(projectName) {
+      document.getElementById('modal-proj').textContent = 'Project: ' + projectName;
+      document.getElementById('fp-project').value = projectName;
+      document.getElementById('overlay').classList.add('open');
+      document.getElementById('form-wrap').style.display = 'block';
+      document.getElementById('form-success').style.display = 'none';
+      document.getElementById('sub-btn').disabled = false;
+      document.getElementById('sub-btn').textContent = 'Submit Access Request';
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      document.getElementById('overlay').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    function maybeClose(e) { if (e.target === e.currentTarget) closeModal(); }
+
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+    // ─── FORM SUBMIT ───
+    document.getElementById('req-form').addEventListener('submit', async function (e) {
+      e.preventDefault();
+      const btn = document.getElementById('sub-btn');
+      btn.disabled = true;
+      btn.textContent = 'Submitting…';
+
+      try {
+        const resp = await fetch(this.action, {
+          method: 'POST',
+          body: new FormData(this),
+          headers: { Accept: 'application/json' }
+        });
+        if (resp.ok) {
+          document.getElementById('form-wrap').style.display = 'none';
+          document.getElementById('form-success').style.display = 'block';
+          this.reset();
+        } else {
+          btn.textContent = 'Error — Try Again';
+          btn.disabled = false;
+        }
+      } catch {
+        btn.textContent = 'Error — Try Again';
+        btn.disabled = false;
+      }
+    });
+
+    // ─── SMOOTH SCROLL ───
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        e.preventDefault();
+        const el = document.querySelector(a.getAttribute('href'));
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+  </script>
+</body>
+</html>
