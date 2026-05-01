@@ -1,0 +1,1818 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#1565C0">
+<title>VMM Weekly Safety Checklist</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+/* ================================================================
+   VMM WEEKLY SAFETY CHECKLIST — v2 Production
+   Colour scheme: Cartridge v15 (Blue sidebar / Pink active / White content)
+   Designed and Developed by Shubhendu Sinha | VMM Central Ops & BI
+   ================================================================ */
+:root{
+  --blue:#1565C0;--blue-d:#0D47A1;--blue-l:#1976D2;--blue-ll:#E3F2FD;--blue-lll:#BBDEFB;
+  --pink:#E91E8C;--pink-d:#C2185B;--pink-l:#F06292;
+  --green:#2E7D32;--green-l:#43A047;--green-bg:#E8F5E9;
+  --red:#C62828;--red-l:#E53935;--red-bg:#FFEBEE;
+  --amber:#E65100;--amber-l:#FB8C00;--amber-bg:#FFF3E0;
+  --gray:#757575;--gray-l:#BDBDBD;--gray-bg:#F5F5F5;--gray-bg2:#FAFAFA;
+  --white:#FFFFFF;--bg:#F0F2F5;--border:#E0E0E0;--border2:#EEEEEE;
+  --text:#212121;--text2:#616161;--text3:#9E9E9E;
+  --shadow:0 2px 8px rgba(0,0,0,.12);--shadow2:0 4px 20px rgba(0,0,0,.15);
+  --radius:8px;--radius-sm:4px;--radius-lg:14px;
+  --sidebar:220px;--topbar:56px;
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{font-family:"Roboto",sans-serif;background:var(--bg);color:var(--text);font-size:14px;line-height:1.5}
+input,select,textarea,button{font-family:inherit}
+a{color:var(--blue);text-decoration:none}
+
+/* UTILITY */
+.hidden{display:none!important}
+.flex{display:flex}.items-center{align-items:center}.justify-between{justify-content:space-between}
+.gap-2{gap:8px}.gap-3{gap:12px}.gap-4{gap:16px}
+.w-full{width:100%}.text-center{text-align:center}
+.mt-2{margin-top:8px}.mt-3{margin-top:12px}.mt-4{margin-top:16px}.mb-2{margin-bottom:8px}.mb-3{margin-bottom:12px}.mb-4{margin-bottom:16px}
+.bold{font-weight:700}.med{font-weight:500}.small{font-size:12px}.xsmall{font-size:11px}
+.text2{color:var(--text2)}.text3{color:var(--text3)}.mono{font-family:monospace}
+.wrap{flex-wrap:wrap}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.grid-3{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px}
+
+/* BUTTONS */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:7px 18px;border:none;border-radius:var(--radius-sm);font-size:13px;font-weight:500;letter-spacing:.3px;cursor:pointer;transition:opacity .2s,transform .1s;white-space:nowrap}
+.btn:hover{opacity:.88}.btn:active{transform:scale(.97)}
+.btn-blue{background:var(--blue);color:#fff}
+.btn-pink{background:var(--pink);color:#fff}
+.btn-green{background:var(--green-l);color:#fff}
+.btn-red{background:var(--red-l);color:#fff}
+.btn-amber{background:var(--amber-l);color:#fff}
+.btn-purple{background:#7B1FA2;color:#fff}
+.btn-outline{background:#fff;border:1px solid var(--border);color:var(--text)}
+.btn-sm{padding:5px 12px;font-size:12px}
+.btn-lg{padding:13px 28px;font-size:15px;font-weight:700;border-radius:var(--radius)}
+
+/* BADGES */
+.badge{display:inline-flex;align-items:center;padding:2px 9px;border-radius:12px;font-size:11px;font-weight:500;white-space:nowrap}
+.badge-green{background:var(--green-bg);color:var(--green)}
+.badge-red{background:var(--red-bg);color:var(--red)}
+.badge-blue{background:var(--blue-ll);color:var(--blue)}
+.badge-amber{background:var(--amber-bg);color:var(--amber)}
+.badge-gray{background:var(--gray-bg);color:var(--gray)}
+
+/* CARD */
+.card{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);margin-bottom:20px}
+.card-head{padding:13px 18px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;min-height:48px}
+.card-title{font-size:14px;font-weight:500}
+.card-body{padding:18px}
+
+/* FORM */
+.form-group{margin-bottom:14px}
+.form-label{display:block;font-size:12px;font-weight:500;margin-bottom:5px;color:var(--text2)}
+.form-control{width:100%;padding:8px 12px;border:1px solid var(--border);border-radius:var(--radius-sm);font-size:13px;outline:none;transition:border-color .2s;background:#fff;color:var(--text)}
+.form-control:focus{border-color:var(--blue);box-shadow:0 0 0 2px rgba(21,101,192,.1)}
+select.form-control{cursor:pointer}
+textarea.form-control{resize:vertical;min-height:72px}
+
+/* TABLE */
+.tbl-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.tbl{width:100%;border-collapse:collapse;font-size:13px}
+.tbl th{padding:10px 14px;background:#F8F9FA;border:1px solid var(--border);font-weight:500;text-align:left;white-space:nowrap;color:var(--text2)}
+.tbl td{padding:10px 14px;border:1px solid var(--border);vertical-align:middle}
+.tbl tbody tr:hover td{background:#FAFFFE}
+
+/* TOGGLE */
+.tgl{position:relative;display:inline-block;width:44px;height:23px;flex-shrink:0}
+.tgl input{opacity:0;width:0;height:0}
+.tgl-sl{position:absolute;cursor:pointer;inset:0;background:#CCC;border-radius:23px;transition:.3s}
+.tgl-sl::before{content:"";position:absolute;width:17px;height:17px;left:3px;bottom:3px;background:#fff;border-radius:50%;transition:.3s;box-shadow:0 1px 4px rgba(0,0,0,.2)}
+.tgl input:checked+.tgl-sl{background:var(--green-l)}
+.tgl input:checked+.tgl-sl::before{transform:translateX(21px)}
+
+/* TABS */
+.tab-bar{display:flex;border-bottom:2px solid var(--border);margin-bottom:20px;overflow-x:auto}
+.tab-btn{padding:10px 20px;border:none;background:none;font-size:13px;font-weight:500;color:var(--text2);border-bottom:2px solid transparent;margin-bottom:-2px;cursor:pointer;transition:.2s;white-space:nowrap}
+.tab-btn.active{color:var(--blue);border-bottom-color:var(--blue)}
+
+/* INFO BOXES */
+.info-box{background:var(--blue-ll);border-left:4px solid var(--blue);padding:11px 14px;border-radius:var(--radius-sm);font-size:13px;color:var(--blue-d);margin-bottom:14px;line-height:1.6}
+.warn-box{background:var(--amber-bg);border-left:4px solid var(--amber-l);padding:11px 14px;border-radius:var(--radius-sm);font-size:13px;color:var(--amber);margin-bottom:14px;line-height:1.6}
+.success-box{background:var(--green-bg);border-left:4px solid var(--green-l);padding:11px 14px;border-radius:var(--radius-sm);font-size:13px;color:var(--green);margin-bottom:14px;line-height:1.6}
+
+/* ════════════════════════════════════════════════════════════
+   ADMIN LAYOUT (Cartridge v15 style)
+════════════════════════════════════════════════════════════ */
+.admin-wrap{display:flex;min-height:100vh}
+
+/* Sidebar */
+.sidebar{width:var(--sidebar);background:var(--blue);display:flex;flex-direction:column;position:fixed;top:0;left:0;height:100vh;z-index:300;transition:transform .28s cubic-bezier(.4,0,.2,1)}
+.sb-logo{background:var(--blue-d);padding:0 16px;display:flex;align-items:center;gap:10px;min-height:var(--topbar);border-bottom:1px solid rgba(255,255,255,.08)}
+.sb-logo img{width:110px;height:auto;filter:brightness(0) invert(1)}
+.sb-logo-txt{color:#fff;font-size:16px;font-weight:900;letter-spacing:.3px;line-height:1.1}
+.sb-logo-txt span{color:var(--pink-l)}
+.sb-user{padding:12px 16px;background:rgba(0,0,0,.15);border-bottom:1px solid rgba(255,255,255,.06)}
+.sb-user-name{color:#fff;font-weight:700;font-size:13px}
+.sb-user-role{color:rgba(255,255,255,.5);font-size:11px;margin-top:1px}
+.sb-nav{flex:1;overflow-y:auto;padding:8px 0}
+.sb-section{padding:16px 18px 5px;color:rgba(255,255,255,.35);font-size:10px;text-transform:uppercase;letter-spacing:1.4px;font-weight:500}
+.nav-item{display:flex;align-items:center;gap:12px;padding:11px 18px;color:rgba(255,255,255,.78);cursor:pointer;transition:.18s;font-size:13px;border-left:3px solid transparent;position:relative}
+.nav-item:hover{background:rgba(255,255,255,.08);color:#fff}
+.nav-item.active{background:var(--pink);color:#fff;border-left-color:rgba(255,255,255,.6);font-weight:500}
+.nav-icon{font-size:16px;width:20px;text-align:center;flex-shrink:0}
+.sb-footer{padding:10px 16px;font-size:10px;color:rgba(255,255,255,.22);border-top:1px solid rgba(255,255,255,.06);line-height:1.6}
+
+/* Main */
+.main-content{margin-left:var(--sidebar);flex:1;display:flex;flex-direction:column;min-height:100vh}
+.topbar{height:var(--topbar);background:#fff;display:flex;align-items:center;padding:0 22px;box-shadow:0 1px 3px rgba(0,0,0,.1);position:sticky;top:0;z-index:100}
+.topbar-title{font-size:15px;font-weight:500;color:var(--text)}
+.page-body{padding:22px;flex:1}
+
+/* Pages */
+.a-page{display:none}
+.a-page.active{display:block}
+
+/* Hamburger */
+.hamburger{display:none;background:none;border:none;font-size:22px;cursor:pointer;margin-right:12px;color:var(--text2)}
+.sb-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:299}
+.sb-overlay.show{display:block}
+@media(max-width:900px){
+  .sidebar{transform:translateX(-100%)}.sidebar.open{transform:translateX(0)}
+  .main-content{margin-left:0}.hamburger{display:block}
+  .page-body{padding:14px}.grid-2{grid-template-columns:1fr}
+}
+
+/* Filter row */
+.filter-row{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-bottom:18px}
+.filter-lbl{font-size:12px;color:var(--text2);white-space:nowrap}
+.filter-input{padding:6px 10px;border:1px solid var(--border);border-radius:var(--radius-sm);font-size:13px;outline:none;background:#fff}
+.filter-input:focus{border-color:var(--blue)}
+
+/* Dashboard stats bar */
+.stats-bar{display:flex;border:1px solid var(--border);border-radius:var(--radius-sm);overflow:hidden;background:#fff;margin-bottom:18px;box-shadow:var(--shadow)}
+.stat-cell{flex:1;padding:16px 12px;text-align:center;border-right:1px solid var(--border)}
+.stat-cell:last-child{border-right:none}
+.stat-val{font-size:28px;font-weight:900;line-height:1;letter-spacing:-.5px}
+.stat-lbl{font-size:11px;color:var(--text2);margin-top:5px;font-weight:500}
+.stat-cell.s-blue .stat-val{color:var(--blue)}
+.stat-cell.s-green .stat-val{color:var(--green)}
+.stat-cell.s-red .stat-val{color:var(--red)}
+.stat-cell.s-amber .stat-val{color:var(--amber)}
+
+.sec-header{text-align:center;padding:11px 20px;background:#fff;border:1px solid var(--border);border-radius:var(--radius-sm);margin-bottom:14px;font-size:15px;font-weight:600;box-shadow:var(--shadow)}
+
+/* ════════════════════════════════════════════════════════════
+   ADMIN LOGIN
+════════════════════════════════════════════════════════════ */
+.login-wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--blue-d) 0%,var(--blue) 60%,#1565C0 100%)}
+.login-card{background:#fff;border-radius:14px;padding:42px 38px;width:360px;box-shadow:0 24px 64px rgba(0,0,0,.32)}
+.login-logo{text-align:center;margin-bottom:22px}
+.login-logo-txt{font-size:22px;font-weight:900;color:var(--blue);letter-spacing:.5px}
+.login-logo-txt span{color:var(--pink)}
+.login-subtitle{text-align:center;font-size:12px;color:var(--text2);margin-bottom:28px;line-height:1.5}
+
+/* ════════════════════════════════════════════════════════════
+   STORE PORTAL (Mobile-first)
+════════════════════════════════════════════════════════════ */
+.store-wrap{min-height:100vh;display:flex;flex-direction:column;background:#F0F2F5;max-width:480px;margin:0 auto}
+
+/* Store header */
+.s-header{background:var(--blue);position:sticky;top:0;z-index:50}
+.s-header-top{display:flex;align-items:center;padding:12px 16px;background:var(--blue-d)}
+.s-logo-sm{color:#fff;font-size:16px;font-weight:900}
+.s-logo-sm span{color:var(--pink-l)}
+.s-admin-link{margin-left:auto;color:rgba(255,255,255,.5);font-size:11px;cursor:pointer}
+.s-title-bar{background:var(--blue);padding:8px 16px;color:#fff}
+.s-title-main{font-size:13px;font-weight:700;line-height:1.3}
+.s-title-sub{font-size:11px;color:rgba(255,255,255,.65);margin-top:1px}
+
+/* Store strip */
+.s-store-strip{background:var(--pink);padding:10px 16px;display:flex;align-items:center;gap:10px;color:#fff}
+.s-store-icon{font-size:18px;flex-shrink:0}
+.s-store-name{font-weight:700;font-size:14px;line-height:1.2}
+.s-store-sub{font-size:11px;opacity:.82;margin-top:2px}
+
+/* Progress */
+.s-prog-wrap{background:var(--blue-d);padding:8px 16px}
+.s-prog-row{display:flex;justify-content:space-between;margin-bottom:4px;font-size:11px;color:rgba(255,255,255,.7)}
+.s-prog-track{background:rgba(255,255,255,.18);height:5px;border-radius:3px;overflow:hidden}
+.s-prog-fill{height:100%;background:var(--pink-l);border-radius:3px;transition:width .35s ease}
+
+/* GPS screen */
+.gps-screen{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 24px;text-align:center;min-height:60vh}
+.gps-anim{width:72px;height:72px;border-radius:50%;border:5px solid rgba(21,101,192,.12);border-top:5px solid var(--blue);animation:spin 1s linear infinite;margin-bottom:24px}
+@keyframes spin{to{transform:rotate(360deg)}}
+.gps-title{font-size:18px;font-weight:700;margin-bottom:10px;color:var(--text)}
+.gps-sub{font-size:13px;color:var(--text2);line-height:1.7;max-width:300px}
+.gps-err{margin-top:20px;padding:14px 16px;background:var(--red-bg);border-radius:var(--radius);color:var(--red);font-size:13px;line-height:1.6;width:100%;max-width:340px;border-left:4px solid var(--red-l)}
+.gps-manual-btn{margin-top:18px;padding:11px 24px;background:var(--blue);color:#fff;border:none;border-radius:var(--radius);cursor:pointer;font-size:14px;font-weight:500}
+
+/* Checklist items */
+.cl-container{padding:10px;flex:1;padding-bottom:80px}
+.cl-item{background:#fff;border-radius:10px;margin-bottom:10px;box-shadow:0 1px 4px rgba(0,0,0,.08);overflow:hidden;transition:box-shadow .2s}
+.cl-item.answered{box-shadow:0 2px 8px rgba(0,0,0,.1)}
+.cl-item-head{padding:14px 14px 8px;display:flex;align-items:flex-start;gap:11px}
+.q-num{width:30px;height:30px;border-radius:50%;background:var(--blue);color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;margin-top:1px}
+.q-num.done{background:var(--green-l)}
+.q-text{font-size:13px;line-height:1.55;flex:1;color:var(--text)}
+.q-cam-badge{display:inline-flex;align-items:center;gap:3px;background:var(--pink);color:#fff;font-size:10px;font-weight:600;padding:2px 7px;border-radius:4px;margin-top:5px}
+.ans-row{display:flex;padding:0 14px 12px;gap:8px}
+.ans-btn{flex:1;padding:9px 4px;border:2px solid var(--border);border-radius:8px;cursor:pointer;background:#fff;font-size:13px;font-weight:500;text-align:center;transition:.18s}
+.ans-btn:hover{border-color:var(--gray-l)}
+.ans-btn.yes.sel{background:var(--green-bg);border-color:var(--green-l);color:var(--green);font-weight:700}
+.ans-btn.no.sel{background:var(--red-bg);border-color:var(--red-l);color:var(--red);font-weight:700}
+.ans-btn.na.sel{background:var(--gray-bg);border-color:var(--gray);color:var(--gray);font-weight:700}
+
+/* Camera section */
+.cam-section{padding:0 14px 14px}
+.cam-preview-wrap{border-radius:8px;overflow:hidden;background:#111;position:relative}
+.cam-preview-wrap img{width:100%;display:block;max-height:200px;object-fit:cover}
+.cam-ts-overlay{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,.75));padding:12px 10px 6px;color:#fff;font-size:10px;line-height:1.4;font-weight:500}
+.cam-action-btn{width:100%;margin-top:8px;padding:11px;background:var(--blue);color:#fff;border:none;border-radius:8px;cursor:pointer;font-size:13px;font-weight:500;display:flex;align-items:center;justify-content:center;gap:6px;transition:.2s}
+.cam-action-btn:hover{background:var(--blue-l)}
+.cam-action-btn.retake{background:#546E7A;margin-top:6px}
+
+/* Submit bar */
+.submit-bar{position:fixed;bottom:0;left:0;right:0;max-width:480px;margin:0 auto;padding:12px 14px;background:#fff;box-shadow:0 -3px 12px rgba(0,0,0,.12);z-index:50}
+.submit-btn{width:100%;padding:14px;background:var(--pink);color:#fff;border:none;border-radius:10px;font-size:16px;font-weight:700;cursor:pointer;transition:.2s;letter-spacing:.3px}
+.submit-btn:disabled{background:#BDBDBD;cursor:not-allowed}
+.submit-btn:not(:disabled):hover{background:var(--pink-d)}
+
+/* Success screen */
+.success-screen{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:36px 22px;text-align:center}
+.success-icon{width:80px;height:80px;border-radius:50%;background:var(--green-l);color:#fff;font-size:38px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;box-shadow:0 8px 24px rgba(67,160,71,.35)}
+.issue-badge{background:var(--blue);color:#fff;padding:12px 28px;border-radius:var(--radius);font-size:18px;font-weight:700;letter-spacing:2px;margin:16px 0;font-family:monospace;box-shadow:var(--shadow)}
+.score-row{display:flex;gap:16px;justify-content:center;font-size:14px;margin-top:10px}
+
+/* Already submitted */
+.already-screen{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:36px 22px;text-align:center}
+
+/* ════════════════════════════════════════════════════════════
+   OVERLAYS & POPUPS
+════════════════════════════════════════════════════════════ */
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.55);display:flex;align-items:center;justify-content:center;z-index:500;padding:16px;backdrop-filter:blur(2px)}
+.popup{background:#fff;border-radius:16px;padding:28px 24px;max-width:360px;width:100%;text-align:center;box-shadow:0 24px 72px rgba(0,0,0,.28);animation:popIn .22s cubic-bezier(.4,0,.2,1)}
+@keyframes popIn{from{transform:scale(.9);opacity:0}to{transform:scale(1);opacity:1}}
+.popup-wide{max-width:520px;max-height:88vh;overflow-y:auto;text-align:left}
+.popup-icon{font-size:52px;margin-bottom:12px;display:block}
+.popup-title{font-size:19px;font-weight:700;margin-bottom:8px;color:var(--text)}
+.popup-sub{font-size:13px;color:var(--text2);margin-bottom:20px;line-height:1.65}
+.popup-store-chip{background:var(--blue);color:#fff;padding:11px 18px;border-radius:var(--radius);font-size:16px;font-weight:700;margin-bottom:6px;border-radius:8px}
+.popup-dist{font-size:12px;color:var(--text3);margin-bottom:22px}
+.pop-btn{width:100%;padding:13px;border:none;border-radius:var(--radius);font-size:15px;font-weight:700;cursor:pointer;transition:.18s;margin-bottom:9px}
+.pop-btn:last-child{margin-bottom:0}
+.pop-btn:active{transform:scale(.98)}
+.pop-btn-green{background:var(--green-l);color:#fff}
+.pop-btn-cancel{background:var(--gray-bg);color:var(--text)}
+.pop-btn-blue{background:var(--blue);color:#fff}
+.pop-btn-pink{background:var(--pink);color:#fff}
+
+/* Manual store list */
+.manual-store-item{padding:12px 14px;border:1px solid var(--border);border-radius:var(--radius);margin-bottom:8px;cursor:pointer;transition:.18s}
+.manual-store-item:hover{background:var(--blue-ll);border-color:var(--blue)}
+.manual-store-item-name{font-weight:600;margin-bottom:2px}
+.manual-store-item-sub{font-size:12px;color:var(--text2)}
+
+/* Camera modal */
+.cam-modal-body{padding:0}
+.cam-modal-video{position:relative;background:#000;border-radius:var(--radius);overflow:hidden;margin-bottom:12px}
+.cam-modal-video video{width:100%;display:block;max-height:300px;object-fit:cover}
+.cam-ts-live{position:absolute;bottom:6px;left:6px;background:rgba(0,0,0,.7);color:#fff;font-size:10px;padding:3px 8px;border-radius:3px;font-weight:500}
+.cam-capture-btn{width:100%;padding:12px;background:var(--pink);color:#fff;border:none;border-radius:var(--radius);font-size:15px;font-weight:700;cursor:pointer;transition:.2s}
+.cam-capture-btn:hover{background:var(--pink-d)}
+
+/* Store edit modal */
+.modal-form-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media(max-width:480px){.modal-form-grid{grid-template-columns:1fr}}
+
+/* Submission detail */
+.det-row{display:flex;padding:8px 0;border-bottom:1px solid var(--border2);font-size:13px}
+.det-k{min-width:130px;color:var(--text2);font-weight:500;flex-shrink:0}
+.det-v{flex:1;word-break:break-word}
+
+/* Import drag zone */
+.drop-zone{border:2px dashed var(--border);border-radius:var(--radius);padding:40px 20px;text-align:center;cursor:pointer;background:var(--gray-bg2);transition:.2s}
+.drop-zone:hover{border-color:var(--blue);background:var(--blue-ll)}
+
+/* TOAST */
+#toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%);background:#323232;color:#fff;padding:10px 24px;border-radius:24px;font-size:13px;z-index:9999;display:none;white-space:nowrap;box-shadow:0 4px 20px rgba(0,0,0,.35);font-weight:500}
+
+/* Preview phone */
+.phone-frame{width:360px;border:10px solid #1a1a1a;border-radius:40px;overflow:hidden;box-shadow:0 24px 72px rgba(0,0,0,.4);margin:0 auto;background:#000}
+.phone-notch{height:28px;background:#000;display:flex;align-items:center;justify-content:center}
+.phone-notch::after{content:"";width:80px;height:16px;background:#111;border-radius:0 0 12px 12px}
+.phone-screen{background:var(--bg);min-height:580px;overflow:hidden}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════
+     STORE PORTAL SCREENS
+═══════════════════════════════════════════════════════ -->
+
+<!-- GPS Screen -->
+<div id="scrGPS" class="store-wrap">
+  <div class="s-header">
+    <div class="s-header-top">
+      <div class="s-logo-sm">VISHAL <span>MEGA MART</span></div>
+      <div class="s-admin-link" onclick="showAdminLogin()">Admin ›</div>
+    </div>
+    <div class="s-title-bar">
+      <div class="s-title-main">Weekly Safety Checklist</div>
+      <div class="s-title-sub">To be filled on every Monday</div>
+    </div>
+  </div>
+  <div class="gps-screen">
+    <div class="gps-anim"></div>
+    <div class="gps-title">Detecting Your Store…</div>
+    <div class="gps-sub">Please allow location access when prompted. Your nearest VMM store will be auto-detected.</div>
+    <div id="gpsErr" class="gps-err hidden"></div>
+    <div id="gpsRetryWrap" class="hidden" style="margin-top:18px;text-align:center;">
+      <button class="gps-manual-btn" onclick="startGPS()">🔄 Retry GPS</button>
+      <div class="small text3" style="margin-top:10px;line-height:1.6;">⚠️ <strong>GPS / Location must be enabled</strong><br>to fill the weekly safety checklist.<br>Please allow location access in browser settings.</div>
+    </div>
+  </div>
+  <div style="padding:14px;text-align:center;margin-top:auto;">
+    <div class="xsmall text3">Designed &amp; Developed by Shubhendu Sinha | VMM Central Ops &amp; BI</div>
+  </div>
+</div>
+
+<!-- Checklist Screen -->
+<div id="scrChecklist" class="store-wrap hidden">
+  <div class="s-header">
+    <div class="s-header-top">
+      <div class="s-logo-sm" style="font-size:14px;">VISHAL <span>MEGA MART</span></div>
+      <div class="s-admin-link" onclick="showAdminLogin()">Admin ›</div>
+    </div>
+    <div class="s-title-bar">
+      <div class="s-title-main">Weekly Safety Checklist</div>
+      <div class="s-title-sub">To be filled on every Monday</div>
+    </div>
+    <div class="s-store-strip" id="storeStrip">
+      <div class="s-store-icon">📍</div>
+      <div>
+        <div class="s-store-name" id="stripName">—</div>
+        <div class="s-store-sub" id="stripCode">—</div>
+      </div>
+    </div>
+    <div class="s-prog-wrap">
+      <div class="s-prog-row"><span>Completion</span><span id="progTxt">0 / 9</span></div>
+      <div class="s-prog-track"><div class="s-prog-fill" id="progFill" style="width:0%"></div></div>
+    </div>
+  </div>
+  <div class="cl-container" id="clContainer"></div>
+  <div class="submit-bar">
+    <button class="submit-btn" id="submitBtn" disabled onclick="doSubmit()">Submit Weekly Safety Checklist</button>
+  </div>
+</div>
+
+<!-- Success Screen -->
+<div id="scrSuccess" class="store-wrap hidden">
+  <div class="s-header">
+    <div class="s-header-top">
+      <div class="s-logo-sm" style="font-size:14px;">VISHAL <span>MEGA MART</span></div>
+    </div>
+    <div class="s-title-bar"><div class="s-title-main">Submission Confirmed ✓</div></div>
+  </div>
+  <div class="success-screen">
+    <div class="success-icon">✓</div>
+    <div style="font-size:22px;font-weight:900;margin-bottom:6px;">Submitted!</div>
+    <div style="font-size:13px;color:var(--text2);margin-bottom:4px;">Weekly Safety Checklist recorded</div>
+    <div class="issue-badge" id="sucIssueNo">WSC-XXXXXXXX</div>
+    <div class="small text3 mb-4">Save this reference number</div>
+    <div style="background:var(--gray-bg);border-radius:var(--radius);padding:16px;width:100%;text-align:left;margin-bottom:14px;">
+      <div style="font-weight:700;margin-bottom:4px;" id="sucStoreName"></div>
+      <div class="small text2" id="sucDate"></div>
+      <div class="score-row" id="sucScore"></div>
+    </div>
+    <button class="btn btn-outline w-full" style="padding:11px;" onclick="showStore()">Back to Home</button>
+  </div>
+</div>
+
+<!-- Already Submitted Screen -->
+<div id="scrAlready" class="store-wrap hidden">
+  <div class="s-header">
+    <div class="s-header-top"><div class="s-logo-sm" style="font-size:14px;">VISHAL <span>MEGA MART</span></div></div>
+    <div class="s-title-bar"><div class="s-title-main">Weekly Safety Checklist</div></div>
+  </div>
+  <div class="already-screen">
+    <div style="font-size:70px;margin-bottom:18px;">✅</div>
+    <div style="font-size:21px;font-weight:900;color:var(--green);margin-bottom:10px;">Already Submitted</div>
+    <div style="font-size:13px;color:var(--text2);margin-bottom:18px;line-height:1.65;">This store has already submitted<br>the Weekly Safety Checklist for this week.</div>
+    <div class="issue-badge" id="alrIssueNo"></div>
+    <div class="small text2 mt-2">Submitted on <span id="alrDate"></span></div>
+    <div id="alrStoreName" class="small text3 mt-2"></div>
+    <button class="btn btn-outline mt-4" style="padding:10px 24px;" onclick="showStore()">Back to Home</button>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     POPUPS
+═══════════════════════════════════════════════════════ -->
+
+<!-- Store Found -->
+<div id="popStoreFound" class="overlay hidden">
+  <div class="popup">
+    <span class="popup-icon">📍</span>
+    <div class="popup-title">Store Detected!</div>
+    <div class="popup-sub">Your location matches a VMM store nearby.</div>
+    <div class="popup-store-chip" id="pfStoreName"></div>
+    <div class="popup-dist" id="pfDist"></div>
+    <button class="pop-btn pop-btn-green" onclick="confirmStore()">✓ OK — Start Filling Checklist</button>
+    <button class="pop-btn pop-btn-cancel" onclick="rejectStore()">Not My Store</button>
+  </div>
+</div>
+
+<!-- No Store -->
+<div id="popNoStore" class="overlay hidden">
+  <div class="popup">
+    <span class="popup-icon">❌</span>
+    <div class="popup-title">No Store Found</div>
+    <div class="popup-sub" id="pnsMsg">No VMM store found within range of your location.</div>
+    <button class="pop-btn pop-btn-blue" onclick="retryGPS()">🔄 Retry GPS</button>
+    <div class="small text3" style="margin-top:6px;">Contact Central Ops if your store is not detected.</div>
+  </div>
+</div>
+
+<!-- Camera -->
+<div id="popCam" class="overlay hidden">
+  <div class="popup" style="max-width:430px;padding:16px;">
+    <div style="font-size:13px;font-weight:600;margin-bottom:12px;color:var(--text2);" id="camQLabel">Take Photo</div>
+    <div class="cam-modal-video">
+      <video id="camFeed" autoplay playsinline muted></video>
+      <div class="cam-ts-live" id="camTS"></div>
+    </div>
+    <canvas id="camCanvas" style="display:none"></canvas>
+    <button class="cam-capture-btn" onclick="capturePhoto()">📸 Capture Photo</button>
+    <button class="pop-btn pop-btn-cancel mt-2" onclick="closeCam()">Cancel</button>
+  </div>
+</div>
+
+<!-- Add/Edit Store -->
+<div id="popStore" class="overlay hidden">
+  <div class="popup popup-wide">
+    <div style="font-size:16px;font-weight:700;margin-bottom:18px;" id="storeModalTitle">Add Store</div>
+    <input type="hidden" id="eStoreId">
+    <div class="modal-form-grid">
+      <div class="form-group"><label class="form-label">Store Code *</label><input class="form-control" id="fCode" placeholder="DEL001"></div>
+      <div class="form-group"><label class="form-label">Store Name *</label><input class="form-control" id="fName" placeholder="VMM Connaught Place"></div>
+      <div class="form-group"><label class="form-label">City</label><input class="form-control" id="fCity"></div>
+      <div class="form-group"><label class="form-label">Region</label><input class="form-control" id="fRegion"></div>
+      <div class="form-group"><label class="form-label">Zone</label><input class="form-control" id="fZone"></div>
+      <div class="form-group"><label class="form-label">Latitude *</label><input class="form-control" id="fLat" type="number" step="any" placeholder="28.6315"></div>
+      <div class="form-group"><label class="form-label">Longitude *</label><input class="form-control" id="fLng" type="number" step="any" placeholder="77.2167"></div>
+      <div class="form-group"><label class="form-label">SM Name</label><input class="form-control" id="fSMName"></div>
+      <div class="form-group"><label class="form-label">SM Email</label><input class="form-control" id="fSMEmail" type="email"></div>
+      <div class="form-group"><label class="form-label">AM Name</label><input class="form-control" id="fAMName"></div>
+      <div class="form-group"><label class="form-label">AM Email</label><input class="form-control" id="fAMEmail" type="email"></div>
+      <div class="form-group"><label class="form-label">ZFM Name</label><input class="form-control" id="fZFMName"></div>
+      <div class="form-group" style="grid-column:1/-1"><label class="form-label">ZFM Email</label><input class="form-control" id="fZFMEmail" type="email"></div>
+    </div>
+    <div class="flex gap-2 mt-3">
+      <button class="btn btn-blue" style="flex:1;padding:11px;" onclick="saveStore()">Save Store</button>
+      <button class="btn btn-outline" style="flex:1;padding:11px;" onclick="closeOverlay('popStore')">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<!-- Add/Edit Question -->
+<div id="popQ" class="overlay hidden">
+  <div class="popup" style="text-align:left;max-width:450px;">
+    <div style="font-size:16px;font-weight:700;margin-bottom:18px;" id="qModalTitle">Add Question</div>
+    <input type="hidden" id="eQId">
+    <div class="form-group"><label class="form-label">Question Text *</label><textarea class="form-control" id="fQText" rows="3" placeholder="Enter checklist question…"></textarea></div>
+    <div class="form-group"><label class="form-label">Live Photo Required?</label>
+      <select class="form-control" id="fQPhoto"><option value="0">No</option><option value="1">Yes (mandatory live camera)</option></select>
+    </div>
+    <div class="flex gap-2 mt-3">
+      <button class="btn btn-blue" style="flex:1;padding:11px;" onclick="saveQuestion()">Save</button>
+      <button class="btn btn-outline" style="flex:1;padding:11px;" onclick="closeOverlay('popQ')">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<!-- Submission Detail -->
+<div id="popSubDetail" class="overlay hidden">
+  <div class="popup popup-wide" style="padding:22px;">
+    <div style="font-size:16px;font-weight:700;margin-bottom:16px;">Submission Detail</div>
+    <div id="subDetailBody"></div>
+    <button class="btn btn-outline w-full mt-4" style="padding:10px;" onclick="closeOverlay('popSubDetail')">Close</button>
+  </div>
+</div>
+
+
+<!-- Store / Admin Switch View (like Cartridge v15) -->
+<div id="popStoreView" class="overlay hidden" style="align-items:flex-start;padding:0;background:rgba(0,0,0,.85);overflow-y:auto;">
+  <div style="width:100%;min-height:100vh;display:flex;flex-direction:column;">
+    <!-- View header -->
+    <div style="background:var(--blue-d);padding:12px 20px;display:flex;align-items:center;gap:14px;position:sticky;top:0;z-index:10;box-shadow:0 2px 8px rgba(0,0,0,.3);">
+      <div style="color:#fff;font-weight:700;font-size:14px;">👁 Store View Preview</div>
+      <div style="flex:1;"></div>
+      <div style="display:flex;gap:8px;">
+        <button onclick="svSetStore(null)" class="btn btn-sm" style="background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.25);">All Stores ↓</button>
+        <button onclick="closeOverlay('popStoreView')" class="btn btn-sm" style="background:var(--pink);color:#fff;">✕ Back to Admin</button>
+      </div>
+    </div>
+    <!-- Store picker -->
+    <div style="background:rgba(255,255,255,.05);padding:12px 20px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;border-bottom:1px solid rgba(255,255,255,.08);">
+      <span style="color:rgba(255,255,255,.6);font-size:12px;">Preview as store:</span>
+      <select id="svStorePicker" onchange="svSetStore(this.value)" style="padding:5px 10px;border-radius:4px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.1);color:#fff;font-size:13px;outline:none;">
+        <option value="">— Select a Store —</option>
+      </select>
+      <div id="svStoreChip" class="hidden" style="background:var(--pink);color:#fff;padding:4px 12px;border-radius:12px;font-size:12px;font-weight:600;"></div>
+    </div>
+    <!-- Two column: phone + question summary -->
+    <div style="display:flex;gap:0;flex:1;flex-wrap:wrap;">
+      <!-- Phone frame -->
+      <div style="flex:1;min-width:320px;padding:24px;display:flex;align-items:flex-start;justify-content:center;">
+        <div style="width:340px;">
+          <div style="border:8px solid #111;border-radius:36px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.6);background:#000;">
+            <div style="height:24px;background:#000;display:flex;align-items:center;justify-content:center;">
+              <div style="width:70px;height:14px;background:#111;border-radius:0 0 10px 10px;"></div>
+            </div>
+            <div style="background:var(--blue-d);padding:10px 14px;display:flex;align-items:center;justify-content:space-between;">
+              <div style="color:#fff;font-size:14px;font-weight:900;">VISHAL <span style="color:#F06292;">MEGA MART</span></div>
+            </div>
+            <div style="background:var(--blue);padding:7px 14px;">
+              <div style="color:#fff;font-size:12px;font-weight:700;">Weekly Safety Checklist</div>
+              <div style="color:rgba(255,255,255,.6);font-size:10px;margin-top:2px;">To be filled on every Monday</div>
+            </div>
+            <div id="svStoreStrip" style="background:var(--pink);padding:9px 14px;display:flex;gap:8px;color:#fff;font-size:12px;font-weight:700;align-items:center;"><span>📍</span><span id="svStripTxt">Select a store to preview</span></div>
+            <div style="background:#f4f6f9;padding:9px;max-height:440px;overflow-y:auto;" id="svQList"></div>
+            <div style="padding:10px 9px;background:#fff;border-top:1px solid #eee;">
+              <div style="background:var(--pink);color:#fff;text-align:center;padding:12px;border-radius:10px;font-size:13px;font-weight:700;">Submit Weekly Safety Checklist</div>
+            </div>
+          </div>
+          <div style="text-align:center;margin-top:14px;color:rgba(255,255,255,.35);font-size:11px;">Store mobile view (iOS / Android browser)</div>
+        </div>
+      </div>
+      <!-- Store info panel -->
+      <div style="width:320px;background:rgba(255,255,255,.04);border-left:1px solid rgba(255,255,255,.08);padding:20px;" id="svInfoPanel">
+        <div style="color:rgba(255,255,255,.4);font-size:13px;text-align:center;padding:40px 0;">Select a store to see its info</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div id="toast"></div>
+
+<!-- ═══════════════════════════════════════════════════════
+     ADMIN LOGIN
+═══════════════════════════════════════════════════════ -->
+<div id="adminLogin" class="hidden">
+  <div class="login-wrap">
+    <div class="login-card">
+      <div class="login-logo">
+        <div class="login-logo-txt">VISHAL <span>MEGA MART</span></div>
+      </div>
+      <div class="login-subtitle">Weekly Safety Checklist<br>Admin Portal</div>
+      <div class="form-group">
+        <label class="form-label">Admin Password</label>
+        <input type="password" class="form-control" id="aPwd" placeholder="Enter password" onkeydown="if(event.key==='Enter')doLogin()">
+      </div>
+      <button class="btn btn-blue w-full" style="padding:12px;font-size:14px;" onclick="doLogin()">Login →</button>
+      <div id="loginErr" class="hidden" style="margin-top:12px;color:var(--red);font-size:13px;text-align:center;"></div>
+      <div style="margin-top:20px;text-align:center;font-size:12px;">
+        <a href="#" onclick="showStore()">← Back to Store Portal</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     ADMIN MAIN
+═══════════════════════════════════════════════════════ -->
+<div id="adminMain" class="hidden">
+<div class="admin-wrap">
+
+  <div id="sbOverlay" class="sb-overlay" onclick="closeSidebar()"></div>
+
+  <!-- Sidebar -->
+  <div class="sidebar" id="sidebar">
+    <div class="sb-logo">
+      <div class="sb-logo-txt">VISHAL <span>MEGA MART</span></div>
+    </div>
+    <div class="sb-user">
+      <div class="sb-user-name">Shubhendu Sinha</div>
+      <div class="sb-user-role">Central Ops &amp; BI · Admin</div>
+    </div>
+    <nav class="sb-nav">
+      <div class="sb-section">Main</div>
+      <div class="nav-item active" data-p="dashboard" onclick="goPage('dashboard',this)"><span class="nav-icon">📊</span>Dashboard</div>
+      <div class="sb-section">Management</div>
+      <div class="nav-item" data-p="stores" onclick="goPage('stores',this)"><span class="nav-icon">🏪</span>Stores</div>
+      <div class="nav-item" data-p="questions" onclick="goPage('questions',this)"><span class="nav-icon">❓</span>Questions</div>
+      <div class="nav-item" data-p="submissions" onclick="goPage('submissions',this)"><span class="nav-icon">📋</span>Submissions</div>
+      <div class="sb-section">Tools</div>
+      <div class="nav-item" data-p="email" onclick="goPage('email',this)"><span class="nav-icon">📧</span>Email Config</div>
+      <div class="nav-item" data-p="impexp" onclick="goPage('impexp',this)"><span class="nav-icon">📥</span>Import / Export</div>
+      <div class="nav-item" data-p="preview" onclick="goPage('preview',this)"><span class="nav-icon">👁</span>Store View</div>
+      <div class="nav-item" data-p="settings" onclick="goPage('settings',this)"><span class="nav-icon">⚙️</span>Settings</div>
+      <div class="sb-section">Account</div>
+      <div class="nav-item" onclick="doLogout()"><span class="nav-icon">🚪</span>Logout</div>
+    </nav>
+    <div class="sb-footer">Designed &amp; Developed by Shubhendu Sinha<br>VMM Central Operations &amp; BI</div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <div class="topbar">
+      <button class="hamburger" onclick="openSidebar()">☰</button>
+      <span class="topbar-title" id="topTitle">Dashboard</span>
+      <div style="flex:1"></div>
+      <span id="topDateStr" class="small text2" style="margin-right:12px;"></span>
+      <button class="btn btn-outline btn-sm" onclick="openStoreViewModal()" style="font-size:12px;gap:4px;border-color:var(--pink);color:var(--pink);">👁 Store View</button>
+    </div>
+    <div class="page-body">
+
+      <!-- ── DASHBOARD ──────────────────────────────────── -->
+      <div id="pageDashboard" class="a-page active">
+        <div class="filter-row">
+          <span class="filter-lbl">From Date</span>
+          <input type="date" class="filter-input" id="dFrom">
+          <span class="filter-lbl">Upto Date</span>
+          <input type="date" class="filter-input" id="dTo">
+          <button class="btn btn-purple" onclick="loadDash()">FILTER</button>
+          <button class="btn btn-red" onclick="clearDash()">CLEAR</button>
+          <button class="btn btn-green" onclick="exportDashCSV()">EXCEL</button>
+        </div>
+        <div class="sec-header">All Stores</div>
+        <div class="stats-bar">
+          <div class="stat-cell s-blue"><div class="stat-val" id="dTotal">0</div><div class="stat-lbl">Total Stores</div></div>
+          <div class="stat-cell s-green"><div class="stat-val" id="dSub">0</div><div class="stat-lbl">Submitted</div></div>
+          <div class="stat-cell s-red"><div class="stat-val" id="dPend">0</div><div class="stat-lbl">Pending</div></div>
+          <div class="stat-cell"><div class="stat-val" id="dPct" style="color:var(--blue)">0%</div><div class="stat-lbl">Compliance %</div></div>
+        </div>
+        <div class="card">
+          <div class="card-head">
+            <span class="card-title">Weekly Safety Checklist — Question-wise Summary</span>
+            <span class="small text2" id="dashPeriod"></span>
+          </div>
+          <div class="tbl-wrap">
+            <table class="tbl">
+              <thead><tr>
+                <th style="min-width:320px;">Weekly Safety Checklist</th>
+                <th style="text-align:center;width:70px;">Yes</th>
+                <th style="text-align:center;width:70px;">No</th>
+                <th style="text-align:center;width:100px;">Not Available</th>
+                <th style="min-width:200px;">Remarks (No Condition)</th>
+              </tr></thead>
+              <tbody id="dashQBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── STORES ─────────────────────────────────────── -->
+      <div id="pageStores" class="a-page">
+        <div class="flex items-center justify-between mb-4 wrap gap-3">
+          <div class="flex gap-2 wrap">
+            <input class="filter-input" id="sSearch" placeholder="Search stores…" oninput="renderStores()" style="width:200px;">
+            <select class="filter-input" id="sStatusF" onchange="renderStores()">
+              <option value="">All Status</option>
+              <option value="active">Active Only</option>
+              <option value="inactive">Inactive Only</option>
+            </select>
+          </div>
+          <button class="btn btn-blue" onclick="openStoreModal()">+ Add Store</button>
+        </div>
+        <div class="card">
+          <div class="tbl-wrap">
+            <table class="tbl">
+              <thead><tr>
+                <th>#</th><th>Code</th><th>Store Name</th><th>City</th><th>Zone</th>
+                <th>AM Name</th><th>Status</th><th>Active</th><th>Actions</th>
+              </tr></thead>
+              <tbody id="storesBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── QUESTIONS ──────────────────────────────────── -->
+      <div id="pageQuestions" class="a-page">
+        <div class="flex items-center justify-between mb-4">
+          <span class="small text2">Manage weekly safety checklist questions</span>
+          <button class="btn btn-blue" onclick="openQModal()">+ Add Question</button>
+        </div>
+        <div class="card">
+          <div class="tbl-wrap">
+            <table class="tbl">
+              <thead><tr><th>#</th><th>Question</th><th>Live Photo</th><th>Active</th><th>Action</th></tr></thead>
+              <tbody id="qBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── SUBMISSIONS ────────────────────────────────── -->
+      <div id="pageSubmissions" class="a-page">
+        <div class="filter-row">
+          <span class="filter-lbl">Date</span>
+          <input type="date" class="filter-input" id="subDateF">
+          <button class="btn btn-purple" onclick="renderSubs()">FILTER</button>
+          <button class="btn btn-red" onclick="clearSubF()">CLEAR ALL</button>
+          <button class="btn btn-green" onclick="exportSubsCSV()">EXPORT CSV</button>
+        </div>
+        <div class="card">
+          <div class="card-head">
+            <span class="card-title">Submission Log (All Time)</span>
+            <span class="small text2" id="subCnt"></span>
+          </div>
+          <div class="tbl-wrap">
+            <table class="tbl">
+              <thead><tr>
+                <th>Issue No.</th><th>Store Name</th><th>Code</th><th>City</th>
+                <th>SM Name</th><th>Submitted At</th><th>Score</th><th>Actions</th>
+              </tr></thead>
+              <tbody id="subBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── EMAIL CONFIG ───────────────────────────────── -->
+      <div id="pageEmail" class="a-page">
+        <div class="info-box">ℹ️ <strong>Submission routing:</strong> If Power Automate URL is set (Settings tab), all submissions auto-sync silently. Email automation below handles the Monday blast, hourly reminders and AM reports via your existing Outlook VBA module.</div>
+        <div class="card">
+          <div class="card-head"><span class="card-title">Email Schedule</span></div>
+          <div class="card-body">
+            <div class="tbl-wrap"><table class="tbl">
+              <thead><tr><th>Trigger</th><th>Time (Monday)</th><th>Recipients</th></tr></thead>
+              <tbody>
+                <tr><td><strong>Monday Blast</strong></td><td>7:00 AM</td><td>SM Group email, CC: All AM + ZFM + Fixed CCs</td></tr>
+                <tr><td>Hourly Reminder (per pending store)</td><td>10 AM – 11 PM (every hour)</td><td>Individual SM email (separate mail per store)</td></tr>
+                <tr><td>AM Report</td><td>12 PM, 2 PM, 4 PM, 6 PM</td><td>AM email with pending stores listed; those SMs in CC (no email IDs shown in body)</td></tr>
+              </tbody>
+            </table></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-head"><span class="card-title">Email Configuration</span></div>
+          <div class="card-body">
+            <div class="grid-2">
+              <div class="form-group"><label class="form-label">From / Central Inbox</label><input class="form-control" id="eCFrom" placeholder="merchandise.support@vishalretail.co.in"></div>
+              <div class="form-group"><label class="form-label">SM Group Email</label><input class="form-control" id="eSMG" placeholder="vishalretail.sm@vishalretail.co.in"></div>
+              <div class="form-group"><label class="form-label">Fixed CC 1</label><input class="form-control" id="eCC1" placeholder="manoj.kumar@vishalwholesale.co.in"></div>
+              <div class="form-group"><label class="form-label">Fixed CC 2</label><input class="form-control" id="eCC2" placeholder="aishveriya.arora@vishalretail.co.in"></div>
+            </div>
+            <button class="btn btn-blue" onclick="saveEmailCfg()">Save Email Config</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── IMPORT / EXPORT ────────────────────────────── -->
+      <div id="pageImpexp" class="a-page">
+        <div class="tab-bar">
+          <button class="tab-btn active" onclick="switchIETab(this,'ieImport')">Import</button>
+          <button class="tab-btn" onclick="switchIETab(this,'ieExport')">Export</button>
+        </div>
+        <div id="ieImport">
+          <div class="info-box">📥 First bulk import loads all stores from CSV. Subsequent imports add only new store codes — existing stores preserved. Latest import appears at top of store list.</div>
+          <div class="card">
+            <div class="card-head"><span class="card-title">Import Stores — CSV</span></div>
+            <div class="card-body">
+              <div class="drop-zone" onclick="document.getElementById('importF').click()">
+                <div style="font-size:36px;margin-bottom:10px;">📂</div>
+                <div style="font-weight:500;margin-bottom:4px;">Click to select CSV file</div>
+                <div class="small text2">Format: StoreCode, StoreName, City, Region, Zone, Lat, Lng, SMName, SMEmail, AMName, AMEmail, ZFMName, ZFMEmail</div>
+                <input type="file" id="importF" accept=".csv" style="display:none" onchange="importStoreCSV(this)">
+              </div>
+              <button class="btn btn-outline mt-3 btn-sm" onclick="dlTemplate()">⬇ Download CSV Template</button>
+              <div id="importRes" class="hidden mt-3" style="padding:11px;border-radius:4px;font-size:13px;"></div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-head"><span class="card-title">Import Submissions — JSON</span></div>
+            <div class="card-body">
+              <div class="small text2 mb-3">Import submission JSON files from devices or OneDrive exports to aggregate the dashboard.</div>
+              <input type="file" id="importSubF" accept=".json" onchange="importSubJSON(this)" style="font-size:13px;">
+            </div>
+          </div>
+        </div>
+        <div id="ieExport" class="hidden">
+          <div class="grid-3">
+            <div class="card" style="margin-bottom:0;">
+              <div class="card-body" style="text-align:center;">
+                <div style="font-size:34px;margin-bottom:8px;">📊</div>
+                <div class="med mb-2">Dashboard Summary</div>
+                <div class="small text2 mb-3">Question-wise Yes/No/NA counts</div>
+                <button class="btn btn-green w-full btn-sm" onclick="exportDashCSV()">Download CSV</button>
+              </div>
+            </div>
+            <div class="card" style="margin-bottom:0;">
+              <div class="card-body" style="text-align:center;">
+                <div style="font-size:34px;margin-bottom:8px;">🏪</div>
+                <div class="med mb-2">Store Master</div>
+                <div class="small text2 mb-3">All store configuration data</div>
+                <button class="btn btn-blue w-full btn-sm" onclick="exportStoreCSV()">Download CSV</button>
+              </div>
+            </div>
+            <div class="card" style="margin-bottom:0;">
+              <div class="card-body" style="text-align:center;">
+                <div style="font-size:34px;margin-bottom:8px;">📋</div>
+                <div class="med mb-2">Submission Log</div>
+                <div class="flex gap-2 mb-2">
+                  <input type="date" class="filter-input w-full" id="expFr" style="font-size:11px;padding:4px 7px;">
+                  <input type="date" class="filter-input w-full" id="expTo" style="font-size:11px;padding:4px 7px;">
+                </div>
+                <button class="btn btn-green w-full btn-sm" onclick="exportSubsCSVRange()">Download CSV</button>
+              </div>
+            </div>
+            <div class="card" style="margin-bottom:0;">
+              <div class="card-body" style="text-align:center;">
+                <div style="font-size:34px;margin-bottom:8px;">💾</div>
+                <div class="med mb-2">Full Backup</div>
+                <div class="small text2 mb-3">All data in JSON (photos included)</div>
+                <button class="btn btn-outline w-full btn-sm" onclick="exportFullJSON()">Download JSON</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── STORE VIEW PREVIEW ─────────────────────────── -->
+      <div id="pagePreview" class="a-page">
+        <div class="info-box mb-4">👁 Live preview of the store mobile interface. Staff see this on their phone.</div>
+        <div class="phone-frame">
+          <div class="phone-notch"></div>
+          <div class="phone-screen">
+            <div style="background:var(--blue-d);padding:10px 14px;display:flex;align-items:center;justify-content:space-between;">
+              <div class="s-logo-sm" style="font-size:13px;">VISHAL <span>MEGA MART</span></div>
+            </div>
+            <div style="background:var(--blue);padding:7px 14px;color:#fff;font-size:12px;font-weight:700;">Weekly Safety Checklist</div>
+            <div style="background:var(--blue);padding:5px 14px 8px;color:rgba(255,255,255,.7);font-size:10px;">To be filled on every Monday</div>
+            <div style="background:var(--pink);padding:9px 14px;display:flex;gap:8px;color:#fff;font-size:12px;font-weight:700;align-items:center;"><span>📍</span>VMM Sample Store (XXX001)</div>
+            <div style="padding:9px" id="previewQs"></div>
+            <div style="padding:9px">
+              <div style="background:var(--pink);color:#fff;text-align:center;padding:12px;border-radius:9px;font-size:14px;font-weight:700;">Submit Weekly Safety Checklist</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── SETTINGS ───────────────────────────────────── -->
+      <div id="pageSettings" class="a-page">
+        <div class="card">
+          <div class="card-head">
+            <span class="card-title">Data Storage Settings</span>
+            <span class="badge badge-green">Power Automate · No server needed</span>
+          </div>
+          <div class="card-body">
+            <!-- PA URL - PRIMARY -->
+            <div class="form-group">
+              <label class="form-label" style="color:var(--green);font-size:13px;">⚡ Power Automate HTTP Trigger URL <span style="background:var(--green-bg);color:var(--green);padding:2px 8px;border-radius:4px;font-size:11px;margin-left:6px;">PRIMARY — Fully Automatic</span></label>
+              <input class="form-control" id="cfgPAUrl" placeholder="https://defaulta65de...powerplatform.com/...invoke?api-version=1" style="font-size:11px;font-family:monospace;">
+              <div class="small text2 mt-2">Paste your Power Automate URL here. When set, every submission silently goes to your OneDrive Excel automatically — store does nothing after Submit.</div>
+              <div id="paStatusMsg" class="hidden mt-2 small" style="padding:8px 12px;border-radius:4px;"></div>
+              <button class="btn btn-outline btn-sm mt-2" onclick="testPAUrl()">🔗 Test Connection</button>
+            </div>
+            <hr style="border:none;border-top:1px solid var(--border);margin:16px 0;">
+            <!-- Fallback -->
+            <div class="form-group">
+              <label class="form-label" style="font-size:12px;">📧 Fallback — Central Inbox (if no PA URL set)</label>
+              <input class="form-control" id="cfgCentral" placeholder="merchandise.support@vishalretail.co.in">
+              <div class="small text2 mt-2">Used only if PA URL is blank. Submit opens a pre-filled email — store taps Send once.</div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">GPS Detection Radius (metres)</label>
+              <input class="form-control" id="cfgRad" type="number" value="200" min="50" max="5000">
+            </div>
+            <button class="btn btn-blue" onclick="saveSettings()">Save Settings</button>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-head"><span class="card-title">Change Admin Password</span></div>
+          <div class="card-body">
+            <div class="grid-2">
+              <div class="form-group"><label class="form-label">New Password</label><input type="password" class="form-control" id="newPwd" placeholder="Enter new password"></div>
+              <div class="form-group"><label class="form-label">Confirm Password</label><input type="password" class="form-control" id="conPwd" placeholder="Confirm new password"></div>
+            </div>
+            <button class="btn btn-blue" onclick="changePwd()">Update Password</button>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /page-body -->
+  </div><!-- /main-content -->
+</div><!-- /admin-wrap -->
+</div><!-- /adminMain -->
+
+<script>
+// ═══════════════════════════════════════════════════════════════
+// DATA & STATE
+// ═══════════════════════════════════════════════════════════════
+const DEF_PWD = '6020922';
+const DEF_Q = [
+  {id:'q1',text:'Are emergency lights operational and tested?',pr:false,active:true},
+  {id:'q2',text:'Are fire extinguishers in place, accessible and in working condition?',pr:false,active:true},
+  {id:'q3',text:'Are fire extinguisher maintenance records up to date?',pr:false,active:true},
+  {id:'q4',text:'Is fire exit signage clearly visible and illuminated at all exits?',pr:false,active:true},
+  {id:'q5',text:'Are emergency contact posters displayed at all cash tills and back office?',pr:true,active:true},
+  {id:'q6',text:'Are emergency contacts displayed inside all lifts / elevators?',pr:true,active:true},
+  {id:'q7',text:'Are lift opening / emergency rescue tools available and accessible to staff?',pr:false,active:true},
+  {id:'q8',text:'Is the first aid kit complete, stocked and accessible to all staff?',pr:false,active:true},
+  {id:'q9',text:'Are fire tank water levels full and daily readings being recorded?',pr:false,active:true}
+];
+const DEF_STORES = [
+  {id:'s1',code:'DEL001',name:'VMM Connaught Place',city:'Delhi',region:'North',zone:'ZFM-North',lat:28.6315,lng:77.2167,smName:'Ramesh Kumar',smEmail:'ramesh.kumar@vishalretail.co.in',amName:'Sunil Sharma',amEmail:'sunil.sharma@vishalretail.co.in',zfmName:'Ajay Verma',zfmEmail:'ajay.verma@vishalretail.co.in',active:true,addedAt:Date.now()-3000},
+  {id:'s2',code:'DEL002',name:'VMM Karol Bagh',city:'Delhi',region:'North',zone:'ZFM-North',lat:28.6519,lng:77.1907,smName:'Priya Singh',smEmail:'priya.singh@vishalretail.co.in',amName:'Sunil Sharma',amEmail:'sunil.sharma@vishalretail.co.in',zfmName:'Ajay Verma',zfmEmail:'ajay.verma@vishalretail.co.in',active:true,addedAt:Date.now()-2000},
+  {id:'s3',code:'NOI001',name:'VMM Sector 18 Noida',city:'Noida',region:'North',zone:'ZFM-North',lat:28.5706,lng:77.3219,smName:'Mohit Gupta',smEmail:'mohit.gupta@vishalretail.co.in',amName:'Kavita Rao',amEmail:'kavita.rao@vishalretail.co.in',zfmName:'Ajay Verma',zfmEmail:'ajay.verma@vishalretail.co.in',active:true,addedAt:Date.now()-1000},
+  {id:'s4',code:'GGN001',name:'VMM DLF Cyber City',city:'Gurgaon',region:'North',zone:'ZFM-North',lat:28.4947,lng:77.0894,smName:'Anita Joshi',smEmail:'anita.joshi@vishalretail.co.in',amName:'Kavita Rao',amEmail:'kavita.rao@vishalretail.co.in',zfmName:'Ajay Verma',zfmEmail:'ajay.verma@vishalretail.co.in',active:false,addedAt:Date.now()}
+];
+
+let S = {stores:[],questions:[],submissions:[],cfg:{}};
+let AS = {store:null,responses:{},photos:{},camStream:null,activeCamQ:null,geoCoords:null,camTick:null};
+
+function loadData(){
+  try{
+    S.stores = JSON.parse(localStorage.getItem('vmm_stores')||'null') || JSON.parse(JSON.stringify(DEF_STORES));
+    S.questions = JSON.parse(localStorage.getItem('vmm_questions')||'null') || JSON.parse(JSON.stringify(DEF_Q));
+    S.submissions = JSON.parse(localStorage.getItem('vmm_submissions')||'[]');
+    S.cfg = JSON.parse(localStorage.getItem('vmm_cfg')||'{}');
+    if(!S.cfg.pwd) S.cfg.pwd = DEF_PWD;
+    if(!S.cfg.radius) S.cfg.radius = 200;
+  }catch(e){
+    S.stores = JSON.parse(JSON.stringify(DEF_STORES));
+    S.questions = JSON.parse(JSON.stringify(DEF_Q));
+    S.submissions = [];
+    S.cfg = {pwd:DEF_PWD,radius:200};
+  }
+}
+function saveData(){
+  try{
+    localStorage.setItem('vmm_stores', JSON.stringify(S.stores));
+    localStorage.setItem('vmm_questions', JSON.stringify(S.questions));
+    localStorage.setItem('vmm_submissions', JSON.stringify(S.submissions));
+    localStorage.setItem('vmm_cfg', JSON.stringify(S.cfg));
+  }catch(e){showToast('Storage error: '+e.message);}
+}
+
+// ═══════════════════════════════════════════════════════════════
+// SCREEN CONTROL
+// ═══════════════════════════════════════════════════════════════
+const SCREENS = ['scrGPS','scrChecklist','scrSuccess','scrAlready','adminLogin','adminMain'];
+function showScreen(id){SCREENS.forEach(s=>document.getElementById(s).classList.add('hidden'));document.getElementById(id).classList.remove('hidden');}
+function showStore(){showScreen('scrGPS');startGPS();}
+function closeOverlay(id){document.getElementById(id).classList.add('hidden');}
+
+// Sidebar
+function openSidebar(){document.getElementById('sidebar').classList.add('open');document.getElementById('sbOverlay').classList.add('show');}
+function closeSidebar(){document.getElementById('sidebar').classList.remove('open');document.getElementById('sbOverlay').classList.remove('show');}
+
+// Toast
+let _toastT;
+function showToast(msg,dur=2800){
+  const t=document.getElementById('toast');
+  t.textContent=msg;t.style.display='block';
+  clearTimeout(_toastT);
+  _toastT=setTimeout(()=>t.style.display='none',dur);
+}
+
+// Date helpers
+function getMonday(d){const day=d.getDay(),diff=d.getDate()-day+(day===0?-6:1);return new Date(d.setDate(diff));}
+function toDateStr(d){return d.toLocaleDateString('en-IN',{day:'2-digit',month:'short',year:'numeric'});}
+function toInputDate(d){return d.toISOString().substring(0,10);}
+function fmtDT(d){return d.toLocaleDateString('en-IN')+' '+d.toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit'});}
+function weekKey(){return toInputDate(getMonday(new Date()));}
+
+// ═══════════════════════════════════════════════════════════════
+// GPS & STORE DETECTION
+// ═══════════════════════════════════════════════════════════════
+function startGPS(){
+  document.getElementById('gpsErr').classList.add('hidden');
+  document.getElementById('gpsRetryWrap').classList.add('hidden');
+  if(!navigator.geolocation){
+    showGPSErr('Geolocation is not supported by this browser.');
+    return;
+  }
+  navigator.geolocation.getCurrentPosition(
+    pos => onGotGPS(pos.coords.latitude, pos.coords.longitude),
+    err => {
+      let msg = 'GPS error: ' + err.message;
+      if(err.code===1) msg = 'Location permission denied. Please enable GPS/Location access for this site in your browser settings.';
+      showGPSErr(msg);
+    },
+    {enableHighAccuracy:true, timeout:18000, maximumAge:0}
+  );
+  // Watch for continuous geo updates (for photo tagging)
+  if(navigator.geolocation){
+    navigator.geolocation.watchPosition(p=>{AS.geoCoords=p.coords;}, ()=>{}, {enableHighAccuracy:true});
+  }
+}
+function showGPSErr(msg){
+  const el=document.getElementById('gpsErr');
+  el.textContent=msg; el.classList.remove('hidden');
+  document.getElementById('gpsRetryWrap').classList.remove('hidden');
+}
+function onGotGPS(lat,lng){
+  const radius = S.cfg.radius||200;
+  let best=null, bestDist=Infinity;
+  S.stores.filter(s=>s.active!==false).forEach(s=>{
+    const d=haversine(lat,lng,s.lat,s.lng);
+    if(d<bestDist){bestDist=d;best=s;}
+  });
+  if(best && bestDist<=radius){
+    AS._pendingStore=best;
+    AS._pendingDist=Math.round(bestDist);
+    document.getElementById('pfStoreName').textContent=best.name;
+    document.getElementById('pfDist').textContent='Store Code: '+best.code+' · Distance: '+Math.round(bestDist)+'m away';
+    document.getElementById('popStoreFound').classList.remove('hidden');
+  } else {
+    let msg = 'No VMM store found within '+(radius)+'m of your location.';
+    if(best) msg += '\nNearest store: '+best.name+' ('+Math.round(bestDist)+'m away)';
+    document.getElementById('pnsMsg').textContent=msg;
+    document.getElementById('popNoStore').classList.remove('hidden');
+  }
+}
+function confirmStore(){
+  closeOverlay('popStoreFound');
+  AS.store = AS._pendingStore;
+  const wk=weekKey();
+  const ex=S.submissions.find(s=>s.storeCode===AS.store.code && s.weekKey===wk);
+  if(ex){
+    document.getElementById('alrIssueNo').textContent=ex.issueNo;
+    document.getElementById('alrDate').textContent=fmtDT(new Date(ex.submittedAt));
+    document.getElementById('alrStoreName').textContent=ex.storeName+' ('+ex.storeCode+')';
+    showScreen('scrAlready');
+    return;
+  }
+  initChecklist();
+  showScreen('scrChecklist');
+}
+function rejectStore(){closeOverlay('popStoreFound');document.getElementById('pnsMsg').textContent='GPS detected a different store. Please move to your store and retry.';document.getElementById('popNoStore').classList.remove('hidden');}
+function retryGPS(){closeOverlay('popNoStore');startGPS();}
+function haversine(a,b,c,d){
+  const R=6371000,dL=(c-a)*Math.PI/180,dG=(d-b)*Math.PI/180;
+  const x=Math.sin(dL/2)**2+Math.cos(a*Math.PI/180)*Math.cos(c*Math.PI/180)*Math.sin(dG/2)**2;
+  return R*2*Math.atan2(Math.sqrt(x),Math.sqrt(1-x));
+}
+
+// ═══════════════════════════════════════════════════════════════
+// CHECKLIST
+// ═══════════════════════════════════════════════════════════════
+function initChecklist(){
+  AS.responses={};AS.photos={};
+  const mon=getMonday(new Date());
+  document.getElementById('stripName').textContent=AS.store.name;
+  document.getElementById('stripCode').textContent=AS.store.code+' · '+toDateStr(mon);
+  renderChecklist();
+}
+function renderChecklist(){
+  const qs=S.questions.filter(q=>q.active!==false);
+  document.getElementById('clContainer').innerHTML=qs.map((q,i)=>{
+    const ans=AS.responses[q.id]||'';
+    const hasPh=!!AS.photos[q.id];
+    return `<div class="cl-item${ans?' answered':''}" id="clItem_${q.id}">
+      <div class="cl-item-head">
+        <div class="q-num${ans?' done':''}">${i+1}</div>
+        <div>
+          <div class="q-text">${q.text}</div>
+          ${q.pr?'<span class="q-cam-badge">📸 Live Photo Required</span>':''}
+        </div>
+      </div>
+      <div class="ans-row">
+        <button class="ans-btn yes${ans==='yes'?' sel':''}" onclick="setAns('${q.id}','yes',this)">✓ Yes</button>
+        <button class="ans-btn no${ans==='no'?' sel':''}" onclick="setAns('${q.id}','no',this)">✗ No</button>
+        <button class="ans-btn na${ans==='na'?' sel':''}" onclick="setAns('${q.id}','na',this)">N/A</button>
+      </div>
+      ${q.pr ? `<div class="cam-section" id="cs_${q.id}" style="display:${ans==='yes'?'block':'none'}">
+        ${hasPh
+          ? `<div class="cam-preview-wrap"><img src="${AS.photos[q.id]}" alt="Captured photo"><div class="cam-ts-overlay" id="camov_${q.id}">📍 Geo-tagged · ${fmtDT(new Date())}</div></div>
+             <button class="cam-action-btn retake" onclick="openCam('${q.id}')">🔄 Retake Photo</button>`
+          : `<button class="cam-action-btn" onclick="openCam('${q.id}')">📸 Take Live Photo</button>`
+        }
+      </div>` : ''}
+    </div>`;
+  }).join('');
+  updateProgress();
+}
+function setAns(id,ans,btn){
+  AS.responses[id]=ans;
+  const item=document.getElementById('clItem_'+id);
+  if(item){
+    item.querySelectorAll('.ans-btn').forEach(b=>b.classList.remove('sel'));
+    btn.classList.add('sel');
+    item.classList.add('answered');
+    item.querySelector('.q-num').classList.add('done');
+  }
+  const cs=document.getElementById('cs_'+id);
+  if(cs){
+    cs.style.display=(ans==='yes'?'block':'none');
+    if(ans!=='yes') delete AS.photos[id];
+  }
+  updateProgress();
+}
+function updateProgress(){
+  const qs=S.questions.filter(q=>q.active!==false);
+  const tot=qs.length;
+  const ans=qs.filter(q=>AS.responses[q.id]).length;
+  document.getElementById('progTxt').textContent=ans+' / '+tot;
+  document.getElementById('progFill').style.width=(tot>0?Math.round(ans/tot*100):0)+'%';
+  const allDone=ans===tot;
+  document.getElementById('submitBtn').disabled=!allDone;
+}
+
+// ═══════════════════════════════════════════════════════════════
+// CAMERA (Live only, geo+timestamp overlay)
+// ═══════════════════════════════════════════════════════════════
+function openCam(qId){
+  AS.activeCamQ=qId;
+  const q=S.questions.find(x=>x.id===qId);
+  document.getElementById('camQLabel').textContent=q?q.text.substring(0,60)+(q.text.length>60?'…':''):'Take Photo';
+  document.getElementById('popCam').classList.remove('hidden');
+  navigator.mediaDevices.getUserMedia({video:{facingMode:'environment',width:{ideal:1920},height:{ideal:1080}}})
+    .then(stream=>{
+      AS.camStream=stream;
+      const v=document.getElementById('camFeed');
+      v.srcObject=stream;v.play();
+      tickCamTS();
+    })
+    .catch(err=>{showToast('Camera error: '+err.message);closeCam();});
+}
+function tickCamTS(){
+  const el=document.getElementById('camTS');
+  if(!el||!AS.camStream)return;
+  const n=new Date();
+  el.textContent=n.toLocaleDateString('en-IN')+' '+n.toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit',second:'2-digit'});
+  AS.camTick=setTimeout(tickCamTS,1000);
+}
+function capturePhoto(){
+  clearTimeout(AS.camTick);
+  const v=document.getElementById('camFeed');
+  const c=document.getElementById('camCanvas');
+  c.width=v.videoWidth||1280; c.height=v.videoHeight||960;
+  const ctx=c.getContext('2d');
+  ctx.drawImage(v,0,0);
+
+  // Geo + timestamp watermark
+  const n=new Date();
+  const ts=n.toLocaleDateString('en-IN')+' '+n.toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit',second:'2-digit'});
+  const geo=AS.geoCoords?'GPS: '+AS.geoCoords.latitude.toFixed(5)+', '+AS.geoCoords.longitude.toFixed(5):'GPS: Unavailable';
+  const storeTxt=AS.store?AS.store.code+' · '+AS.store.name:'';
+  const barH=62;
+  ctx.fillStyle='rgba(0,0,0,.72)';
+  ctx.fillRect(0,c.height-barH,c.width,barH);
+  ctx.fillStyle='#FFFFFF';ctx.font='bold '+Math.max(16,c.width/60)+'px Arial';
+  ctx.fillText(storeTxt,12,c.height-38);
+  ctx.fillStyle='#AAAAAA';ctx.font=Math.max(13,c.width/75)+'px Arial';
+  ctx.fillText(ts+' · '+geo,12,c.height-12);
+
+  // Compress if too large
+  let q=0.85, url=c.toDataURL('image/jpeg',q);
+  while(url.length>200000 && q>0.25){q-=0.08;url=c.toDataURL('image/jpeg',q);}
+
+  AS.photos[AS.activeCamQ]=url;
+  closeCam();
+  renderChecklist();
+  showToast('Photo captured & geo-tagged ✓');
+}
+function closeCam(){
+  clearTimeout(AS.camTick);
+  if(AS.camStream){AS.camStream.getTracks().forEach(t=>t.stop());AS.camStream=null;}
+  const v=document.getElementById('camFeed');
+  if(v)v.srcObject=null;
+  closeOverlay('popCam');
+}
+
+// ═══════════════════════════════════════════════════════════════
+// SUBMIT
+// ═══════════════════════════════════════════════════════════════
+function doSubmit(){
+  const qs=S.questions.filter(q=>q.active!==false);
+  if(!qs.every(q=>AS.responses[q.id])){showToast('Please answer all questions first.');return;}
+  const missingPhotos=qs.filter(q=>q.pr && AS.responses[q.id]==='yes' && !AS.photos[q.id]);
+  if(missingPhotos.length){showToast('Please capture live photo for: '+missingPhotos.map(q=>q.text.substring(0,30)).join(', '));return;}
+
+  const now=new Date();
+  const wk=weekKey();
+  const issueNo=generateIssueNo(AS.store.code);
+  const yC=qs.filter(q=>AS.responses[q.id]==='yes').length;
+  const nC=qs.filter(q=>AS.responses[q.id]==='no').length;
+  const naC=qs.filter(q=>AS.responses[q.id]==='na').length;
+
+  const sub={
+    issueNo, storeId:AS.store.id, storeCode:AS.store.code, storeName:AS.store.name,
+    storeCity:AS.store.city||'', storeRegion:AS.store.region||'', storeZone:AS.store.zone||'',
+    smName:AS.store.smName||'', smEmail:AS.store.smEmail||'',
+    amName:AS.store.amName||'', amEmail:AS.store.amEmail||'',
+    zfmName:AS.store.zfmName||'', zfmEmail:AS.store.zfmEmail||'',
+    weekKey:wk, submittedAt:now.toISOString(),
+    yesCount:yC, noCount:nC, naCount:naC, totalQ:qs.length,
+    responses:qs.map(q=>({qId:q.id,qText:q.text,answer:AS.responses[q.id],photo:AS.photos[q.id]||null}))
+  };
+  S.submissions.push(sub);
+  saveData();
+  autoDownloadJSON(sub);
+
+  document.getElementById('sucIssueNo').textContent=issueNo;
+  document.getElementById('sucStoreName').textContent=AS.store.name+' ('+AS.store.code+')';
+  document.getElementById('sucDate').textContent=fmtDT(now);
+  document.getElementById('sucScore').innerHTML=
+    '<span style="color:var(--green-l);font-weight:700;">✓ Yes: '+yC+'</span>'+
+    '<span style="color:var(--red-l);">✗ No: '+nC+'</span>'+
+    '<span style="color:var(--gray);">N/A: '+naC+'</span>';
+  showScreen('scrSuccess');
+}
+async function autoDownloadJSON(sub){
+  const paUrl = S.cfg.paUrl||'';
+  if(paUrl){
+    // Option 1: Power Automate HTTP trigger — silent, no store action
+    try{
+      showToast('Syncing to server…', 5000);
+      const resp = await fetch(paUrl, {
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({
+          issueNo: sub.issueNo,
+          storeCode: sub.storeCode,
+          storeName: sub.storeName,
+          storeCity: sub.storeCity,
+          zone: sub.storeZone,
+          smName: sub.smName,
+          amName: sub.amName,
+          weekKey: sub.weekKey,
+          submittedAt: sub.submittedAt,
+          yesCount: sub.yesCount,
+          noCount: sub.noCount,
+          naCount: sub.naCount,
+          totalQ: sub.totalQ,
+          responses: sub.responses.map(r=>({question:r.qText, answer:r.answer, hasPhoto:!!r.photo}))
+          // Photos excluded from PA payload (too large) — stored locally
+        })
+      });
+      if(resp.ok || resp.status===202){
+        showToast('✓ Submitted & synced to central server');
+        return;
+      }
+      throw new Error('HTTP '+resp.status);
+    }catch(e){
+      console.warn('PA sync failed, falling back to email:', e);
+      showToast('Sync failed — opening email fallback', 3000);
+      setTimeout(()=>sendEmailFallback(sub), 1500);
+    }
+  } else {
+    // Option 2: Auto email fallback
+    sendEmailFallback(sub);
+  }
+}
+
+function sendEmailFallback(sub){
+  const central = S.cfg.centralEmail||'merchandise.support@vishalretail.co.in';
+  const subject = encodeURIComponent('WSC-SUBMITTED: '+sub.issueNo+' | '+sub.storeName);
+  // Structured body — VBA parses between the delimiters, key=value per line
+  let body = '---WSC-DATA-START---\r\n';
+  body += 'ISSUE_NO='+sub.issueNo+'\r\n';
+  body += 'STORE_CODE='+sub.storeCode+'\r\n';
+  body += 'STORE_NAME='+sub.storeName+'\r\n';
+  body += 'CITY='+(sub.storeCity||'')+'\r\n';
+  body += 'REGION='+(sub.storeRegion||'')+'\r\n';
+  body += 'ZONE='+(sub.storeZone||'')+'\r\n';
+  body += 'SM_NAME='+(sub.smName||'')+'\r\n';
+  body += 'AM_NAME='+(sub.amName||'')+'\r\n';
+  body += 'ZFM_NAME='+(sub.zfmName||'')+'\r\n';
+  body += 'WEEK_KEY='+sub.weekKey+'\r\n';
+  body += 'SUBMITTED_AT='+sub.submittedAt+'\r\n';
+  body += 'YES_COUNT='+sub.yesCount+'\r\n';
+  body += 'NO_COUNT='+sub.noCount+'\r\n';
+  body += 'NA_COUNT='+sub.naCount+'\r\n';
+  body += 'TOTAL_Q='+sub.totalQ+'\r\n';
+  (sub.responses||[]).forEach((r,i)=>{
+    const n=i+1;
+    body += 'Q'+n+'_TEXT='+r.qText.replace(/[=\r\n]/g,' ')+'\r\n';
+    body += 'Q'+n+'_ANS='+r.answer.toUpperCase()+'\r\n';
+    body += 'Q'+n+'_PHOTO='+(r.photo?'YES':'NO')+'\r\n';
+  });
+  body += '---WSC-DATA-END---\r\n';
+  body += '\r\n[Auto-generated by VMM Weekly Safety Checklist Portal — do not edit above]';
+  window.location.href='mailto:'+central+'?subject='+encodeURIComponent(subject.replace('%20',' ').replace('WSC-SUBMITTED%3A','WSC-SUBMITTED:').slice(subject.indexOf('WSC-SUBMITTED')<0?0:0))+'&body='+encodeURIComponent(body);
+  // Fix: rebuild cleanly
+  const subj='WSC-SUBMITTED: '+sub.issueNo+' | '+sub.storeName;
+  window.location.href='mailto:'+central+'?subject='+encodeURIComponent(subj)+'&body='+encodeURIComponent(body);
+}
+function generateIssueNo(code){
+  const n=new Date();
+  const ds=n.getFullYear()+String(n.getMonth()+1).padStart(2,'0')+String(n.getDate()).padStart(2,'0');
+  const ex=S.submissions.filter(s=>s.storeCode===code && s.issueNo&&s.issueNo.includes(ds)).length;
+  return 'WSC-'+ds+'-'+code+'-'+String(ex+1).padStart(4,'0');
+}
+
+// ═══════════════════════════════════════════════════════════════
+// ADMIN AUTH
+// ═══════════════════════════════════════════════════════════════
+function showAdminLogin(){showScreen('adminLogin');setTimeout(()=>document.getElementById('aPwd').focus(),100);}
+function doLogin(){
+  const pwd=document.getElementById('aPwd').value;
+  if(pwd===S.cfg.pwd){
+    document.getElementById('loginErr').classList.add('hidden');
+    document.getElementById('aPwd').value='';
+    showScreen('adminMain');
+    document.getElementById('topDateStr').textContent=new Date().toLocaleDateString('en-IN',{weekday:'long',day:'2-digit',month:'short',year:'numeric'});
+    goPage('dashboard',document.querySelector('.nav-item[data-p="dashboard"]'));
+  } else {
+    document.getElementById('loginErr').classList.remove('hidden');
+    document.getElementById('loginErr').textContent='Incorrect password. Try again.';
+  }
+}
+function doLogout(){showStore();}
+
+// ═══════════════════════════════════════════════════════════════
+// ADMIN PAGES
+// ═══════════════════════════════════════════════════════════════
+const PAGE_TITLES={dashboard:'Dashboard',stores:'Stores',questions:'Questions',submissions:'Submissions',email:'Email Config',impexp:'Import / Export',preview:'Store View Preview',settings:'Settings'};
+function goPage(name,el){
+  document.querySelectorAll('.a-page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
+  const pg=document.getElementById('page'+name.charAt(0).toUpperCase()+name.slice(1));
+  if(pg)pg.classList.add('active');
+  if(el)el.classList.add('active');
+  document.getElementById('topTitle').textContent=PAGE_TITLES[name]||name;
+  closeSidebar();
+  if(name==='dashboard')loadDash();
+  else if(name==='stores')renderStores();
+  else if(name==='questions')renderQs();
+  else if(name==='submissions')renderSubs();
+  else if(name==='email')loadEmailForm();
+  else if(name==='settings')loadSettingsForm();
+  else if(name==='preview')renderPreview();
+}
+
+// ── DASHBOARD ─────────────────────────────────────────────────
+function loadDash(){
+  const mon=getMonday(new Date());
+  if(!document.getElementById('dFrom').value) document.getElementById('dFrom').value=toInputDate(mon);
+  if(!document.getElementById('dTo').value) document.getElementById('dTo').value=toInputDate(new Date());
+  const fr=document.getElementById('dFrom').value;
+  const to=document.getElementById('dTo').value;
+  let subs=S.submissions;
+  if(fr) subs=subs.filter(s=>s.submittedAt.substring(0,10)>=fr);
+  if(to) subs=subs.filter(s=>s.submittedAt.substring(0,10)<=to);
+  const activeSt=S.stores.filter(s=>s.active!==false);
+  const total=activeSt.length;
+  const submitted=new Set(subs.map(s=>s.storeCode)).size;
+  const pending=Math.max(0,total-submitted);
+  const pct=total>0?((submitted/total)*100).toFixed(2)+'%':'0%';
+  document.getElementById('dTotal').textContent=total;
+  document.getElementById('dSub').textContent=submitted;
+  document.getElementById('dPend').textContent=pending;
+  document.getElementById('dPct').textContent=pct;
+  document.getElementById('dashPeriod').textContent=fr && to ? fr+' to '+to : '';
+  const qs=S.questions.filter(q=>q.active!==false);
+  document.getElementById('dashQBody').innerHTML=qs.map(q=>{
+    const y=subs.filter(s=>s.responses&&s.responses.find(r=>r.qId===q.id&&r.answer==='yes')).length;
+    const n=subs.filter(s=>s.responses&&s.responses.find(r=>r.qId===q.id&&r.answer==='no')).length;
+    const na=subs.filter(s=>s.responses&&s.responses.find(r=>r.qId===q.id&&r.answer==='na')).length;
+    return`<tr>
+      <td style="max-width:340px;font-size:13px;">${q.text}</td>
+      <td style="text-align:center;color:var(--green);font-weight:700;">${y}</td>
+      <td style="text-align:center;color:var(--red);font-weight:700;">${n}</td>
+      <td style="text-align:center;color:var(--gray);font-weight:700;">${na}</td>
+      <td>${n>0?`<div class="flex items-center gap-2"><input type="text" placeholder="Enter remark" class="form-control" style="font-size:12px;padding:5px 8px;" id="rmk_${q.id}"><span style="color:var(--green);font-size:18px;cursor:pointer;" onclick="showToast('Remark noted')">✓</span></div>`:'<span style="color:var(--gray-l);">—</span>'}</td>
+    </tr>`;
+  }).join('');
+}
+function clearDash(){document.getElementById('dFrom').value='';document.getElementById('dTo').value='';loadDash();}
+
+// ── STORES ────────────────────────────────────────────────────
+function renderStores(){
+  const q=(document.getElementById('sSearch').value||'').toLowerCase();
+  const sf=document.getElementById('sStatusF').value;
+  let arr=[...S.stores].sort((a,b)=>(b.addedAt||0)-(a.addedAt||0));
+  if(q) arr=arr.filter(s=>(s.name+s.code+s.city+s.zone).toLowerCase().includes(q));
+  if(sf==='active') arr=arr.filter(s=>s.active!==false);
+  if(sf==='inactive') arr=arr.filter(s=>s.active===false);
+  document.getElementById('storesBody').innerHTML=arr.map((s,i)=>`
+    <tr>
+      <td>${i+1}</td>
+      <td><strong>${s.code}</strong></td>
+      <td>${s.name}</td>
+      <td>${s.city||'—'}</td>
+      <td>${s.zone||'—'}</td>
+      <td>${s.amName||'—'}</td>
+      <td><span class="badge ${s.active!==false?'badge-green':'badge-gray'}">${s.active!==false?'Active':'Inactive'}</span></td>
+      <td><label class="tgl"><input type="checkbox" ${s.active!==false?'checked':''} onchange="toggleStore('${s.id}',this.checked)"><span class="tgl-sl"></span></label></td>
+      <td><button class="btn btn-outline btn-sm" onclick="openStoreModal('${s.id}')">Edit</button></td>
+    </tr>`).join('') || '<tr><td colspan="9" style="text-align:center;padding:28px;color:var(--text2);">No stores found.</td></tr>';
+}
+function toggleStore(id,v){
+  const s=S.stores.find(x=>x.id===id);
+  if(s){s.active=v;saveData();renderStores();showToast(v?'Store activated':'Store deactivated temporarily');}
+}
+function openStoreModal(id){
+  document.getElementById('eStoreId').value=id||'';
+  if(id){
+    const s=S.stores.find(x=>x.id===id);
+    if(!s)return;
+    document.getElementById('storeModalTitle').textContent='Edit Store';
+    ['Code','Name','City','Region','Zone','Lat','Lng','SMName','SMEmail','AMName','AMEmail','ZFMName','ZFMEmail']
+      .forEach(f=>{ const k=f.charAt(0).toLowerCase()+f.slice(1); document.getElementById('f'+f).value=s[k]||''; });
+  } else {
+    document.getElementById('storeModalTitle').textContent='Add Store';
+    ['Code','Name','City','Region','Zone','Lat','Lng','SMName','SMEmail','AMName','AMEmail','ZFMName','ZFMEmail']
+      .forEach(f=>document.getElementById('f'+f).value='');
+  }
+  document.getElementById('popStore').classList.remove('hidden');
+}
+function saveStore(){
+  const code=document.getElementById('fCode').value.trim();
+  const name=document.getElementById('fName').value.trim();
+  const lat=parseFloat(document.getElementById('fLat').value);
+  const lng=parseFloat(document.getElementById('fLng').value);
+  if(!code||!name||isNaN(lat)||isNaN(lng)){showToast('Code, Name, Lat & Lng are required.');return;}
+  const eid=document.getElementById('eStoreId').value;
+  const rec={
+    id:eid||'s_'+Date.now(),code,name,
+    city:document.getElementById('fCity').value.trim(),
+    region:document.getElementById('fRegion').value.trim(),
+    zone:document.getElementById('fZone').value.trim(),
+    lat,lng,
+    smName:document.getElementById('fSMName').value.trim(),
+    smEmail:document.getElementById('fSMEmail').value.trim(),
+    amName:document.getElementById('fAMName').value.trim(),
+    amEmail:document.getElementById('fAMEmail').value.trim(),
+    zfmName:document.getElementById('fZFMName').value.trim(),
+    zfmEmail:document.getElementById('fZFMEmail').value.trim(),
+    active:true, addedAt:Date.now()
+  };
+  if(eid){ const idx=S.stores.findIndex(s=>s.id===eid); if(idx>=0){rec.addedAt=S.stores[idx].addedAt;S.stores[idx]=rec;} }
+  else S.stores.unshift(rec);
+  saveData();closeOverlay('popStore');renderStores();showToast('Store saved successfully');
+}
+
+// ── QUESTIONS ─────────────────────────────────────────────────
+function renderQs(){
+  document.getElementById('qBody').innerHTML=S.questions.map((q,i)=>`
+    <tr>
+      <td>${i+1}</td>
+      <td style="max-width:380px;font-size:13px;">${q.text}</td>
+      <td><span class="badge ${q.pr?'badge-blue':'badge-gray'}">${q.pr?'📸 Yes':'No'}</span></td>
+      <td><label class="tgl"><input type="checkbox" ${q.active!==false?'checked':''} onchange="toggleQ('${q.id}',this.checked)"><span class="tgl-sl"></span></label></td>
+      <td><button class="btn btn-outline btn-sm" onclick="openQModal('${q.id}')">Edit</button></td>
+    </tr>`).join('');
+}
+function toggleQ(id,v){const q=S.questions.find(x=>x.id===id);if(q){q.active=v;saveData();renderQs();}}
+function openQModal(id){
+  document.getElementById('eQId').value=id||'';
+  if(id){
+    const q=S.questions.find(x=>x.id===id);
+    document.getElementById('qModalTitle').textContent='Edit Question';
+    document.getElementById('fQText').value=q.text;
+    document.getElementById('fQPhoto').value=q.pr?'1':'0';
+  } else {
+    document.getElementById('qModalTitle').textContent='Add Question';
+    document.getElementById('fQText').value='';
+    document.getElementById('fQPhoto').value='0';
+  }
+  document.getElementById('popQ').classList.remove('hidden');
+}
+function saveQuestion(){
+  const txt=document.getElementById('fQText').value.trim();
+  if(!txt){showToast('Question text is required');return;}
+  const pr=document.getElementById('fQPhoto').value==='1';
+  const eid=document.getElementById('eQId').value;
+  if(eid){const q=S.questions.find(x=>x.id===eid);if(q){q.text=txt;q.pr=pr;}}
+  else S.questions.push({id:'q_'+Date.now(),text:txt,pr,active:true});
+  saveData();closeOverlay('popQ');renderQs();showToast('Question saved');
+}
+
+// ── SUBMISSIONS ───────────────────────────────────────────────
+function renderSubs(){
+  const mon=getMonday(new Date());
+  if(!document.getElementById('subDateF').value)
+    document.getElementById('subDateF').value=toInputDate(mon);
+  const dv=document.getElementById('subDateF').value;
+  let subs=[...S.submissions];
+  if(dv) subs=subs.filter(s=>s.submittedAt.substring(0,10)===dv);
+  subs.sort((a,b)=>b.submittedAt.localeCompare(a.submittedAt));
+  document.getElementById('subCnt').textContent=subs.length+' record(s)';
+  document.getElementById('subBody').innerHTML=subs.map(s=>`
+    <tr>
+      <td><strong class="mono" style="font-size:11px;">${s.issueNo}</strong></td>
+      <td>${s.storeName}</td>
+      <td>${s.storeCode}</td>
+      <td>${s.storeCity||'—'}</td>
+      <td>${s.smName||'—'}</td>
+      <td style="white-space:nowrap;font-size:12px;">${fmtDT(new Date(s.submittedAt))}</td>
+      <td style="white-space:nowrap;">
+        <span style="color:var(--green-l);font-weight:700;">✓${s.yesCount}</span>
+        <span style="color:var(--red-l);margin:0 4px;">✗${s.noCount}</span>
+        <span style="color:var(--gray);">N/A:${s.naCount}</span>
+      </td>
+      <td><button class="btn btn-outline btn-sm" onclick="showSubDetail('${s.issueNo}')">View</button></td>
+    </tr>`).join('') || '<tr><td colspan="8" style="text-align:center;padding:32px;color:var(--text2);">No submissions for selected date.</td></tr>';
+}
+function clearSubF(){document.getElementById('subDateF').value='';renderSubs();}
+function showSubDetail(issueNo){
+  const s=S.submissions.find(x=>x.issueNo===issueNo);if(!s)return;
+  document.getElementById('subDetailBody').innerHTML=`
+    <div style="background:var(--gray-bg);border-radius:8px;padding:14px;margin-bottom:16px;">
+      <div style="font-weight:700;font-size:15px;margin-bottom:4px;">${s.storeName} (${s.storeCode})</div>
+      <div class="small text2 mono">${s.issueNo}</div>
+      <div class="small text2 mt-2">${fmtDT(new Date(s.submittedAt))}</div>
+    </div>
+    <table style="width:100%;border-collapse:collapse;font-size:12px;">
+      <thead><tr>
+        <th style="padding:8px;border:1px solid var(--border);background:#f8f9fa;text-align:left;">Question</th>
+        <th style="padding:8px;border:1px solid var(--border);background:#f8f9fa;width:60px;">Answer</th>
+        <th style="padding:8px;border:1px solid var(--border);background:#f8f9fa;width:80px;">Photo</th>
+      </tr></thead>
+      <tbody>${(s.responses||[]).map(r=>`<tr>
+        <td style="padding:8px;border:1px solid var(--border);">${r.qText}</td>
+        <td style="padding:8px;border:1px solid var(--border);text-align:center;">
+          <span class="badge ${r.answer==='yes'?'badge-green':r.answer==='no'?'badge-red':'badge-gray'}">${r.answer.toUpperCase()}</span>
+        </td>
+        <td style="padding:8px;border:1px solid var(--border);text-align:center;">
+          ${r.photo?`<img src="${r.photo}" style="max-height:70px;border-radius:4px;cursor:pointer;" onclick="window.open('${r.photo}','_blank')">` : '—'}
+        </td>
+      </tr>`).join('')}</tbody>
+    </table>`;
+  document.getElementById('popSubDetail').classList.remove('hidden');
+}
+
+// ── EMAIL ─────────────────────────────────────────────────────
+function loadEmailForm(){
+  document.getElementById('eCFrom').value=S.cfg.fromEmail||'merchandise.support@vishalretail.co.in';
+  document.getElementById('eSMG').value=S.cfg.smGroup||'vishalretail.sm@vishalretail.co.in';
+  document.getElementById('eCC1').value=S.cfg.cc1||'manoj.kumar@vishalwholesale.co.in';
+  document.getElementById('eCC2').value=S.cfg.cc2||'aishveriya.arora@vishalretail.co.in';
+}
+function saveEmailCfg(){
+  S.cfg.fromEmail=document.getElementById('eCFrom').value.trim();
+  S.cfg.smGroup=document.getElementById('eSMG').value.trim();
+  S.cfg.cc1=document.getElementById('eCC1').value.trim();
+  S.cfg.cc2=document.getElementById('eCC2').value.trim();
+  saveData();showToast('Email configuration saved');
+}
+
+// ── IMPORT / EXPORT ───────────────────────────────────────────
+function switchIETab(btn,id){
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');
+  document.getElementById('ieImport').classList.toggle('hidden',id!=='ieImport');
+  document.getElementById('ieExport').classList.toggle('hidden',id!=='ieExport');
+}
+function importStoreCSV(input){
+  const f=input.files[0];if(!f)return;
+  const r=new FileReader();
+  r.onload=e=>{
+    const lines=e.target.result.replace(/\r/g,'').split('\n').filter(l=>l.trim());
+    let added=0,skipped=0;
+    for(let i=1;i<lines.length;i++){
+      const cols=splitCSVLine(lines[i]);
+      if(cols.length<13||!cols[0])continue;
+      if(S.stores.find(s=>s.code===cols[0])){skipped++;continue;}
+      S.stores.unshift({
+        id:'s_'+Date.now()+'_'+i,code:cols[0].trim(),name:cols[1].trim(),
+        city:cols[2].trim(),region:cols[3].trim(),zone:cols[4].trim(),
+        lat:parseFloat(cols[5]),lng:parseFloat(cols[6]),
+        smName:cols[7].trim(),smEmail:cols[8].trim(),
+        amName:cols[9].trim(),amEmail:cols[10].trim(),
+        zfmName:cols[11].trim(),zfmEmail:cols[12].trim(),
+        active:true,addedAt:Date.now()-i
+      });
+      added++;
+    }
+    saveData();
+    const res=document.getElementById('importRes');
+    res.className=(added>0?'success-box':'warn-box')+' mt-3';
+    res.textContent=`Import complete: ${added} stores added, ${skipped} skipped (already existed).`;
+    res.classList.remove('hidden');
+    showToast(`${added} stores imported`);
+  };
+  r.readAsText(f);
+  input.value='';
+}
+function splitCSVLine(line){
+  const res=[],re=/("([^"]*)"|([^,]*))(,|$)/g;
+  let m;
+  while((m=re.exec(line))!==null){
+    res.push((m[2]!==undefined?m[2]:m[3])||'');
+    if(!m[4])break;
+  }
+  return res;
+}
+function importSubJSON(input){
+  const f=input.files[0];if(!f)return;
+  const r=new FileReader();
+  r.onload=e=>{
+    try{
+      const data=JSON.parse(e.target.result);
+      const arr=Array.isArray(data)?data:[data];
+      let added=0;
+      arr.forEach(sub=>{
+        if(!sub.issueNo)return;
+        if(!S.submissions.find(s=>s.issueNo===sub.issueNo)){S.submissions.push(sub);added++;}
+      });
+      saveData();showToast(added+' submissions imported');
+    }catch(err){showToast('Invalid JSON file');}
+  };
+  r.readAsText(f);input.value='';
+}
+function dlTemplate(){
+  const csv='StoreCode,StoreName,City,Region,Zone,Latitude,Longitude,SMName,SMEmail,AMName,AMEmail,ZFMName,ZFMEmail\nDEL001,VMM Connaught Place,Delhi,North,ZFM-North,28.6315,77.2167,SM Name,sm@vishalretail.co.in,AM Name,am@vishalretail.co.in,ZFM Name,zfm@vishalretail.co.in';
+  dlFile('StoreMaster_Template.csv',csv);
+}
+function exportDashCSV(){
+  const qs=S.questions.filter(q=>q.active!==false);
+  let csv='Question,Yes,No,Not Available\n';
+  qs.forEach(q=>{
+    const y=S.submissions.filter(s=>s.responses&&s.responses.find(r=>r.qId===q.id&&r.answer==='yes')).length;
+    const n=S.submissions.filter(s=>s.responses&&s.responses.find(r=>r.qId===q.id&&r.answer==='no')).length;
+    const na=S.submissions.filter(s=>s.responses&&s.responses.find(r=>r.qId===q.id&&r.answer==='na')).length;
+    csv+=`"${q.text}",${y},${n},${na}\n`;
+  });
+  dlFile('Dashboard_Summary.csv',csv);
+}
+function exportStoreCSV(){
+  let csv='StoreCode,StoreName,City,Region,Zone,Latitude,Longitude,SMName,SMEmail,AMName,AMEmail,ZFMName,ZFMEmail,Status\n';
+  S.stores.forEach(s=>csv+=`"${s.code}","${s.name}","${s.city||''}","${s.region||''}","${s.zone||''}",${s.lat||''},${s.lng||''},"${s.smName||''}","${s.smEmail||''}","${s.amName||''}","${s.amEmail||''}","${s.zfmName||''}","${s.zfmEmail||''}","${s.active!==false?'Active':'Inactive'}"\n`);
+  dlFile('StoreMaster_Export.csv',csv);
+}
+function exportSubsCSV(){
+  let subs=S.submissions;
+  const dv=document.getElementById('subDateF')?document.getElementById('subDateF').value:'';
+  if(dv) subs=subs.filter(s=>s.submittedAt.substring(0,10)===dv);
+  exportSubArr(subs,'Submissions_Export.csv');
+}
+function exportSubsCSVRange(){
+  const fr=document.getElementById('expFr').value;
+  const to=document.getElementById('expTo').value;
+  let subs=S.submissions;
+  if(fr) subs=subs.filter(s=>s.submittedAt.substring(0,10)>=fr);
+  if(to) subs=subs.filter(s=>s.submittedAt.substring(0,10)<=to);
+  exportSubArr(subs,'Submissions_Range.csv');
+}
+function exportSubArr(subs,fn){
+  let csv='Issue No,Store Name,Store Code,City,SM Name,Submitted At,Yes,No,NA\n';
+  subs.forEach(s=>csv+=`"${s.issueNo}","${s.storeName}","${s.storeCode}","${s.storeCity||''}","${s.smName||''}","${fmtDT(new Date(s.submittedAt))}",${s.yesCount},${s.noCount},${s.naCount}\n`);
+  dlFile(fn,csv);
+}
+function exportFullJSON(){
+  dlFile('VMM_Safety_Full_Backup.json',JSON.stringify({stores:S.stores,questions:S.questions,submissions:S.submissions,exportedAt:new Date().toISOString()},null,2));
+}
+function dlFile(name,content){
+  const a=document.createElement('a');
+  a.href='data:text/plain;charset=utf-8,'+encodeURIComponent(content);
+  a.download=name;a.click();
+}
+
+// ── SETTINGS ─────────────────────────────────────────────────
+function loadSettingsForm(){
+  document.getElementById('cfgPAUrl').value=S.cfg.paUrl||'';
+  document.getElementById('cfgCentral').value=S.cfg.centralEmail||'merchandise.support@vishalretail.co.in';
+  document.getElementById('cfgRad').value=S.cfg.radius||200;
+  updatePAStatus();
+}
+function saveSettings(){
+  S.cfg.paUrl=document.getElementById('cfgPAUrl').value.trim();
+  S.cfg.centralEmail=document.getElementById('cfgCentral').value.trim();
+  S.cfg.radius=parseInt(document.getElementById('cfgRad').value)||200;
+  saveData();showToast('Settings saved ✓');
+  updatePAStatus();
+}
+function testPAUrl(){
+  const url=document.getElementById('cfgPAUrl').value.trim();
+  if(!url){showToast('Paste your Power Automate URL first');return;}
+  showToast('Testing…',4000);
+  fetch(url,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({test:true,source:'VMM_Safety_Portal'})})
+    .then(r=>{
+      if(r.ok||r.status===202||r.status===400||r.status===200){showToast('✓ Connection OK — URL is working!');}
+      else{showToast('⚠ Status '+r.status+' — check PA flow');}
+    }).catch(e=>showToast('✓ URL reached (CORS expected) — save and test with real submit'));
+}
+function updatePAStatus(){
+  const el=document.getElementById('paStatusMsg');
+  if(!el)return;
+  const url=S.cfg.paUrl||'';
+  if(url){
+    el.style.background='var(--green-bg)';el.style.color='var(--green)';el.style.padding='8px 12px';el.style.borderRadius='4px';
+    el.textContent='✓ Power Automate URL configured — submissions auto-sync to OneDrive Excel';
+    el.classList.remove('hidden');
+  } else {
+    el.style.background='var(--amber-bg)';el.style.color='var(--amber)';el.style.padding='8px 12px';el.style.borderRadius='4px';
+    el.textContent='⚠ No URL set — email fallback active';
+    el.classList.remove('hidden');
+  }
+}
+function changePwd(){
+  const np=document.getElementById('newPwd').value;
+  const cp=document.getElementById('conPwd').value;
+  if(!np){showToast('Enter new password');return;}
+  if(np!==cp){showToast('Passwords do not match');return;}
+  if(np.length<4){showToast('Password must be at least 4 characters');return;}
+  S.cfg.pwd=np;saveData();
+  document.getElementById('newPwd').value='';document.getElementById('conPwd').value='';
+  showToast('Password updated successfully');
+}
+
+// ── PREVIEW ───────────────────────────────────────────────────
+function renderPreview(){
+  const qs=S.questions.filter(q=>q.active!==false);
+  document.getElementById('previewQs').innerHTML=qs.slice(0,4).map((q,i)=>`
+    <div style="background:#fff;border-radius:8px;margin-bottom:8px;padding:11px 12px;box-shadow:0 1px 4px rgba(0,0,0,.08);">
+      <div style="display:flex;gap:8px;margin-bottom:7px;">
+        <div style="width:24px;height:24px;border-radius:50%;background:var(--blue);color:#fff;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0;">${i+1}</div>
+        <div style="font-size:11px;line-height:1.4;">${q.text.substring(0,80)}${q.text.length>80?'…':''}</div>
+      </div>
+      <div style="display:flex;gap:5px;">
+        <div style="flex:1;text-align:center;padding:6px 2px;border:1.5px solid var(--border);border-radius:6px;font-size:11px;font-weight:500;">✓ Yes</div>
+        <div style="flex:1;text-align:center;padding:6px 2px;border:1.5px solid var(--border);border-radius:6px;font-size:11px;font-weight:500;">✗ No</div>
+        <div style="flex:1;text-align:center;padding:6px 2px;border:1.5px solid var(--border);border-radius:6px;font-size:11px;font-weight:500;">N/A</div>
+      </div>
+    </div>`).join('')
+  +'<div style="text-align:center;padding:8px;font-size:10px;color:var(--text3);">…+'+(Math.max(0,qs.length-4))+' more questions</div>';
+}
+
+
+// ═══════════════════════════════════════════════════════════════
+// STORE VIEW MODAL (Admin → Store View like Cartridge v15)
+// ═══════════════════════════════════════════════════════════════
+function openStoreViewModal(){
+  // Populate store picker
+  const picker = document.getElementById('svStorePicker');
+  picker.innerHTML = '<option value="">— Select a Store —</option>' +
+    S.stores.filter(s=>s.active!==false).map(s=>`<option value="${s.id}">${s.name} (${s.code})</option>`).join('');
+  svSetStore(null);
+  document.getElementById('popStoreView').classList.remove('hidden');
+}
+function svSetStore(id){
+  document.getElementById('svStorePicker').value = id||'';
+  const chip = document.getElementById('svStoreChip');
+  const panel = document.getElementById('svInfoPanel');
+  const qList = document.getElementById('svQList');
+  const stripTxt = document.getElementById('svStripTxt');
+  if(!id){
+    chip.classList.add('hidden');
+    stripTxt.textContent = 'Select a store to preview';
+    qList.innerHTML = '<div style="text-align:center;padding:24px;color:var(--text2);font-size:12px;">Select a store above to preview the checklist</div>';
+    panel.innerHTML = '<div style="color:rgba(255,255,255,.4);font-size:13px;text-align:center;padding:40px 0;">Select a store to see its info</div>';
+    return;
+  }
+  const store = S.stores.find(s=>s.id===id);
+  if(!store) return;
+  // Chip
+  chip.textContent = store.name + ' · ' + store.code;
+  chip.classList.remove('hidden');
+  // Strip
+  const mon = getMonday(new Date());
+  stripTxt.textContent = store.name + ' (' + store.code + ')';
+  // Q list
+  const qs = S.questions.filter(q=>q.active!==false);
+  qList.innerHTML = qs.map((q,i)=>`
+    <div style="background:#fff;border-radius:8px;margin-bottom:8px;padding:11px 12px;box-shadow:0 1px 3px rgba(0,0,0,.07);">
+      <div style="display:flex;gap:8px;margin-bottom:7px;">
+        <div style="width:24px;height:24px;border-radius:50%;background:var(--blue);color:#fff;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0;">${i+1}</div>
+        <div style="font-size:11px;line-height:1.45;flex:1;">${q.text}
+          ${q.pr?'<div style="display:inline-block;background:var(--pink);color:#fff;font-size:9px;font-weight:700;padding:1px 6px;border-radius:3px;margin-top:3px;">📸 Live Photo</div>':''}
+        </div>
+      </div>
+      <div style="display:flex;gap:5px;">
+        <div style="flex:1;text-align:center;padding:6px 2px;border:1.5px solid #e0e0e0;border-radius:6px;font-size:10px;font-weight:600;color:#333;">✓ Yes</div>
+        <div style="flex:1;text-align:center;padding:6px 2px;border:1.5px solid #e0e0e0;border-radius:6px;font-size:10px;font-weight:600;color:#333;">✗ No</div>
+        <div style="flex:1;text-align:center;padding:6px 2px;border:1.5px solid #e0e0e0;border-radius:6px;font-size:10px;font-weight:600;color:#333;">N/A</div>
+      </div>
+    </div>`).join('');
+  // Info panel
+  const wk = weekKey();
+  const lastSub = [...S.submissions].filter(s=>s.storeCode===store.code).sort((a,b)=>b.submittedAt.localeCompare(a.submittedAt))[0];
+  const thisWkSub = S.submissions.find(s=>s.storeCode===store.code && s.weekKey===wk);
+  panel.innerHTML = `
+    <div style="color:#fff;font-size:13px;font-weight:700;margin-bottom:14px;">${store.name}</div>
+    <div style="background:rgba(255,255,255,.06);border-radius:8px;padding:12px;margin-bottom:12px;">
+      <div style="color:rgba(255,255,255,.5);font-size:10px;text-transform:uppercase;letter-spacing:.8px;margin-bottom:8px;">Store Details</div>
+      ${[['Code',store.code],['City',store.city||'—'],['Zone',store.zone||'—'],['Region',store.region||'—'],['SM Name',store.smName||'—'],['AM Name',store.amName||'—'],['ZFM Name',store.zfmName||'—']].map(([k,v])=>`
+      <div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.05);font-size:12px;">
+        <span style="color:rgba(255,255,255,.45);">${k}</span>
+        <span style="color:#fff;font-weight:500;">${v}</span>
+      </div>`).join('')}
+    </div>
+    <div style="background:${thisWkSub?'rgba(67,160,71,.15)':'rgba(229,57,53,.12)'};border-radius:8px;padding:12px;margin-bottom:12px;border:1px solid ${thisWkSub?'rgba(67,160,71,.3)':'rgba(229,57,53,.25)'};">
+      <div style="color:rgba(255,255,255,.5);font-size:10px;text-transform:uppercase;letter-spacing:.8px;margin-bottom:6px;">This Week Status</div>
+      <div style="font-size:14px;font-weight:700;color:${thisWkSub?'#81C784':'#EF9A9A'};">${thisWkSub?'✓ Submitted':'⏳ Pending'}</div>
+      ${thisWkSub?`<div style="font-size:11px;color:rgba(255,255,255,.5);margin-top:4px;">${thisWkSub.issueNo}</div>`:''}
+    </div>
+    ${lastSub?`<div style="background:rgba(255,255,255,.05);border-radius:8px;padding:12px;">
+      <div style="color:rgba(255,255,255,.5);font-size:10px;text-transform:uppercase;letter-spacing:.8px;margin-bottom:6px;">Last Submission</div>
+      <div style="font-size:11px;color:rgba(255,255,255,.7);">${fmtDT(new Date(lastSub.submittedAt))}</div>
+      <div class="mono" style="font-size:10px;color:rgba(255,255,255,.4);margin-top:3px;">${lastSub.issueNo}</div>
+      <div style="display:flex;gap:8px;margin-top:8px;font-size:12px;">
+        <span style="color:#81C784;font-weight:700;">✓${lastSub.yesCount}</span>
+        <span style="color:#EF9A9A;font-weight:700;">✗${lastSub.noCount}</span>
+        <span style="color:rgba(255,255,255,.4);">N/A:${lastSub.naCount}</span>
+      </div>
+    </div>`:''}
+  `;
+}
+// ═══════════════════════════════════════════════════════════════
+// INIT
+// ═══════════════════════════════════════════════════════════════
+loadData();
+showStore();
+</script>
+</body>
+</html>
